@@ -1,0 +1,34 @@
+#: import card_layout card_layout
+
+<CardLayout>:
+    card_image: card_image
+    BoxLayout:
+        orientation: 'vertical'
+
+        BoxLayout:
+            size_hint: 1, 0.1
+
+            Button:
+                text: 'Turn'
+                on_press: root.turn()
+            Button:
+                text: 'Del'
+                on_press: root.delete_card()
+            Button:
+                text:  '-45°'
+                on_press: root.rotate_left()
+            Button:
+                text: '+45°'
+                on_press: root.rotate_right()
+            Label:
+                text: 'move'
+
+        ScatterLayout:
+            id: card_image
+            do_translation: False
+            do_scale: False
+            CardImage:
+                source: root.current_face
+
+
+

@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a189ce22-8b32-4318-ac6d-00a3bee56930" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/Unlock.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/button_layout.kv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/button_layout.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/card_layout.kv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/card_layout.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gameboard_layout.kv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gameboard_layout.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/11_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/11_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/15_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/15_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/22_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/22_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/25_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/25_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/30_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/30_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/37_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/37_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/42_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/42_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/43_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/43_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/44_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/44_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/52_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/52_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/58_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/58_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/66_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/66_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/73_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/73_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/86_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/86_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/88_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/88_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/8_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/8_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/92_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/92_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/C_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/C_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/F_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/F_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/G_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/G_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/H_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/H_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/R_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/R_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/V_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/V_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/W_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/W_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/pub_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/pub_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/regle_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/regle_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/start_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/5eme avenue/start_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/15_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/15_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/21_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/21_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/22_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/22_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/32_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/32_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/35_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/35_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/42_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/42_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/47_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/47_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/4_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/4_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/50_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/50_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/60_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/60_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/63_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/63_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/67_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/67_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/73_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/73_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/79_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/79_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/80_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/80_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/85_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/85_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/C_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/C_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/K_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/K_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/M_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/M_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/start_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Elite/start_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/12_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/12_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/17_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/17_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/18_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/18_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/24_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/24_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/25_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/25_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/2_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/2_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/30_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/30_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/31_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/31_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/32_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/32_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/39_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/39_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/40_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/40_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/43_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/43_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/48_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/48_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/50_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/50_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/52_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/52_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/55_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/55_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/57_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/57_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/65_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/65_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/67_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/67_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/77_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/77_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/7_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/7_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/81_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/81_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/84_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/84_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/8_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/8_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/95_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/95_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/96_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/96_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/99_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/99_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/N_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/N_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/P_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/P_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/start_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/La cabane de la sorciere/start_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/15_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/15_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/20_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/20_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/22_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/22_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/23_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/23_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/24_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/24_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/28_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/28_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/30_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/30_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/37_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/37_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/39_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/39_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/42_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/42_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/55_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/55_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/60_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/60_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/66_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/66_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/6_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/6_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/85_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/85_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/88_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/88_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/8_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/8_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/91_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/91_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/9_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/9_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/A_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/A_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/B_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/B_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/H_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/H_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/R_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/R_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/start_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le Temple De Ra/start_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/11_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/11_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/12_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/12_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/21_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/21_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/22_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/22_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/29_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/29_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/2_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/2_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/31_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/31_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/37_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/37_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/39_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/39_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/50_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/50_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/51_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/51_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/58_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/58_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/5_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/5_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/66_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/66_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/68_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/68_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/70_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/70_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/71_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/71_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/73_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/73_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/76_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/76_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/79_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/79_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/7_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/7_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/88_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/88_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/pub_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/pub_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/start_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/start_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/18_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/18_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/21_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/21_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/22_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/22_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/24_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/24_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/29_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/29_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/31_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/31_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/39_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/39_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/43_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/43_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/46_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/46_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/48_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/48_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/50_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/50_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/60_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/60_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/64_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/64_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/68_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/68_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/73_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/73_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/78_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/78_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/82_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/82_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/84_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/84_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/88_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/88_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/92_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/92_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/94_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/94_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/regle1_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/regle1_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/regle2_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/regle2_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/start_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo Arann/start_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/14_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/14_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/19_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/19_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/23_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/23_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/2_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/2_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/34_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/34_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/35_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/35_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/39_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/39_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/42_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/42_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/50_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/50_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/51_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/51_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/52_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/52_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/5_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/5_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/63_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/63_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/65_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/65_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/67_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/67_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/68_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/68_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/69_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/69_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/72_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/72_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/78_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/78_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/84_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/84_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/86_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/86_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/92_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/92_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/93_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/93_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/97_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/97_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/99_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/99_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/pub_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/pub_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/start_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Noel en juillet/start_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/19_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/19_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/27_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/27_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/32_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/32_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/35_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/35_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/36_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/36_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/38_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/38_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/41_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/41_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/42_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/42_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/46_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/46_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/60_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/60_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/61_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/61_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/64_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/64_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/65_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/65_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/74_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/74_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/77_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/77_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/7_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/7_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/80_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/80_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/83_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/83_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/88_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/88_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/99_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/99_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/regle1_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/regle1_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/regle2_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/regle2_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/regle3_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/regle3_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/start_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/start_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Tutoriel/11_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Tutoriel/11_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Tutoriel/16_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Tutoriel/16_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Tutoriel/21_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Tutoriel/21_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Tutoriel/25_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Tutoriel/25_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Tutoriel/35_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Tutoriel/35_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Tutoriel/42_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Tutoriel/42_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Tutoriel/46_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Tutoriel/46_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Tutoriel/48_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Tutoriel/48_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Tutoriel/67_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Tutoriel/67_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Tutoriel/start_r.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ressources/decks/Tutoriel/start_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unlock.kv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/zoom_layout.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2lyRD8TVXMSnkKxNJSpaTDqNn1A" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Python.main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/CelineLucas/PycharmProjects/Unlock/ressources/decks"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\CelineLucas\PycharmProjects\Unlock\ressources\decks" />
+      <recent name="C:\Users\CelineLucas\PycharmProjects\Unlock\ressources\packs" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\CelineLucas\PycharmProjects\Unlock" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Unlock" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-975db3bf15a3-31b6be0877a2-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.18034.82" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a189ce22-8b32-4318-ac6d-00a3bee56930" name="Changes" comment="" />
+      <created>1726150208220</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1726150208220</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
