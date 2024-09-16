@@ -1,7 +1,7 @@
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 
-SIDE_BUTTON_WIDTH = 0.07
+SIDE_BUTTON_WIDTH = 0.025
 
 
 class ButtonLayout(BoxLayout):

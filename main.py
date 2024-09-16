@@ -22,7 +22,7 @@ Builder.load_file('gameboard_layout.kv')
 Builder.load_file('button_layout.kv')
 Builder.load_file('card_layout.kv')
 
-DECK = "Tutoriel"
+DECK = "Le donjon de Doo-Arann"
 
 
 class MainWidget(BoxLayout):

@@ -38,7 +38,8 @@ class CardImage(Image):
         image_parent = self.parent.parent.parent.parent.parent  # A améliorer
         image = ZoomImage(image_parent.current_face)
         image.size_hint = (1, 1)
-        image_parent.parent.add_widget(image)
+        target = image_parent.parent.parent
+        target.add_widget(image)
 
 
 class ZoomImage(ScatterLayout):

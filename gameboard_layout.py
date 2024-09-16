@@ -3,6 +3,11 @@ from kivy.uix.relativelayout import RelativeLayout
 from card_layout import CardLayout
 
 MAX_CARD_NUMBER = 10
+ROWS_NUMBER = MAX_CARD_NUMBER // 5
+COLS_NUMBER = MAX_CARD_NUMBER // ROWS_NUMBER
+
+SPACING_X = 0.1
+SPACING_Y = 0.1
 
 
 class GameboardLayout(RelativeLayout):
@@ -18,10 +23,18 @@ class GameboardLayout(RelativeLayout):
         index = self.free_position_list[0]
         self.free_position_list.remove(index)
 
-        x = (index % 5) * self.width * 0.2
-        y = (index // 5) * self.height * 0.5
+        card_layout_width = self.width // COLS_NUMBER
+        card_layout_height = self.height // ROWS_NUMBER
 
-        card_layout = CardLayout(card_number, self.deck, self.delete_card, pos=(x, y))
+        """x = (index % COLS_NUMBER) * card_layout_width
+        y = (index // COLS_NUMBER) * card_layout_height"""
+
+        x = index % COLS_NUMBER * (1 / COLS_NUMBER)
+        y = index // COLS_NUMBER * (1 / ROWS_NUMBER)
+
+        # Je pense que je dois utiliser des pos_hint p
+
+        card_layout = CardLayout(card_number, self.deck, self.delete_card, pos_hint={'x': x, 'y': y})
         self.card_layout_list.append(card_layout)
         self.add_widget(card_layout)
 
@@ -33,5 +46,3 @@ class GameboardLayout(RelativeLayout):
 
         self.free_position_list.append(index)
         self.free_position_list.sort()
-
-

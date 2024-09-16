@@ -4,9 +4,11 @@
     card_image: card_image
     BoxLayout:
         orientation: 'vertical'
+        spacing: dp(10)
+        padding: dp(10)
 
         BoxLayout:
-            size_hint: 1, 0.1
+            size_hint: 1, 0.05
 
             Button:
                 text: 'Turn'
@@ -24,6 +26,9 @@
                 text: 'move'
 
         ScatterLayout:
+
+            size_hint : 0.8, 0.8
+            pos_hint: {'center_x':0.5, 'center_y': 0.5}
             id: card_image
             do_translation: False
             do_scale: False
