@@ -4,7 +4,7 @@ from kivy.uix.image import Image
 from kivy.uix.scatterlayout import ScatterLayout
 
 
-class CardLayout(BoxLayout):
+class CardLayout(ScatterLayout):
     current_face = StringProperty()
     card_image = ObjectProperty()
     current_rotation = 0
