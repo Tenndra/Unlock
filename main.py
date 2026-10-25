@@ -1,7 +1,10 @@
 from kivy.config import Config
+from kivy.uix.floatlayout import FloatLayout
+from kivy.uix.scatterlayout import ScatterLayout
 
 WIDTH = 1920
 HEIGHT = 1080
+SIDE_BUTTON_WIDTH = 0.025
 
 Config.set('graphics', 'width', str(WIDTH))
 Config.set('graphics', 'height', str(HEIGHT))
@@ -22,7 +25,7 @@ Builder.load_file('gameboard_layout.kv')
 Builder.load_file('button_layout.kv')
 Builder.load_file('card_layout.kv')
 
-DECK = "Le donjon de Doo-Arann"
+DECK = "La cabane de la sorciere"
 
 
 class MainWidget(BoxLayout):
@@ -32,12 +35,14 @@ class MainWidget(BoxLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
+        self.width = WIDTH
+        self.height = HEIGHT
         self.get_card_list()
 
-        button_layout = ButtonLayout(self.card_list, self.pic_a_card)
+        button_layout = ButtonLayout(self.card_list, self.pic_a_card, size_hint_x = SIDE_BUTTON_WIDTH)
         self.add_widget(button_layout)
 
-        self.gameboard_layout = GameboardLayout(DECK)
+        self.gameboard_layout = GameboardLayout(DECK, width=WIDTH-SIDE_BUTTON_WIDTH, height=HEIGHT)
         self.add_widget(self.gameboard_layout)
 
     def get_card_list(self):

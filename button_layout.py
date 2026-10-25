@@ -1,7 +1,7 @@
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 
-SIDE_BUTTON_WIDTH = 0.025
+
 
 
 class ButtonLayout(BoxLayout):
@@ -10,7 +10,6 @@ class ButtonLayout(BoxLayout):
         for card_name in card_list:
             button = PicButton(card_name, callback)
             self.add_widget(button)
-            self.size_hint_x = SIDE_BUTTON_WIDTH
 
 
 class PicButton(Button):

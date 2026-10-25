@@ -1,4 +1,5 @@
 from kivy.uix.relativelayout import RelativeLayout
+from kivy.uix.scatterlayout import ScatterLayout
 
 from card_layout import CardLayout
 
@@ -10,7 +11,7 @@ SPACING_X = 0.1
 SPACING_Y = 0.1
 
 
-class GameboardLayout(RelativeLayout):
+class GameboardLayout(ScatterLayout):
     card_layout_list = []
     free_position_list = list(range(10))
 

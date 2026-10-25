@@ -1,9 +1,10 @@
 from kivy.properties import StringProperty, ObjectProperty
+from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.image import Image
 from kivy.uix.scatterlayout import ScatterLayout
 
 
-class CardLayout(ScatterLayout):
+class CardLayout(BoxLayout):
     current_face = StringProperty()
     card_image = ObjectProperty()
     current_rotation = 0
