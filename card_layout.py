@@ -16,7 +16,7 @@ class CardLayout(BoxLayout):
         self.verso = "ressources/decks/" + deck + '/' + card_name + '_v.jpg'
         self.current_face = self.recto
         self.size_hint_x = 0.20
-        self.size_hint_y = 0.5
+        self.size_hint_y = 0.4
 
     def turn(self):
         if self.current_face == self.recto:

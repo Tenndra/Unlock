@@ -1,4 +1,3 @@
-from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.scatterlayout import ScatterLayout
 
 from card_layout import CardLayout
@@ -24,16 +23,8 @@ class GameboardLayout(ScatterLayout):
         index = self.free_position_list[0]
         self.free_position_list.remove(index)
 
-        card_layout_width = self.width // COLS_NUMBER
-        card_layout_height = self.height // ROWS_NUMBER
-
-        """x = (index % COLS_NUMBER) * card_layout_width
-        y = (index // COLS_NUMBER) * card_layout_height"""
-
         x = index % COLS_NUMBER * (1 / COLS_NUMBER)
         y = index // COLS_NUMBER * (1 / ROWS_NUMBER)
-
-        # Je pense que je dois utiliser des pos_hint p
 
         card_layout = CardLayout(card_number, self.deck, self.delete_card, pos_hint={'x': x, 'y': y})
         self.card_layout_list.append(card_layout)

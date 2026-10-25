@@ -4,73 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a189ce22-8b32-4318-ac6d-00a3bee56930" name="Changes" comment="">
+    <list default="true" id="a189ce22-8b32-4318-ac6d-00a3bee56930" name="Changes" comment="trying doing better">
       <change beforePath="$PROJECT_DIR$/button_layout.py" beforeDir="false" afterPath="$PROJECT_DIR$/button_layout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/card_layout.py" beforeDir="false" afterPath="$PROJECT_DIR$/card_layout.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gameboard_layout.py" beforeDir="false" afterPath="$PROJECT_DIR$/gameboard_layout.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/5eme avenue/pub_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/5eme avenue/pub_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/5eme avenue/regle_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/5eme avenue/regle_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/pub_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le cambriolage fantome/pub_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/18_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/18_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/21_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/21_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/22_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/22_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/24_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/24_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/29_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/29_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/31_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/31_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/39_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/39_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/43_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/43_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/46_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/46_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/48_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/48_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/50_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/50_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/60_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/60_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/64_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/64_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/68_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/68_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/73_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/73_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/78_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/78_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/82_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/82_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/84_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/84_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/88_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/88_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/92_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/92_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/94_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/94_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/pub2_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/pub2_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/pub_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/pub_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/start_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Le donjon de Doo-Arann/start_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Noel en juillet/pub_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Noel en juillet/pub_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/regle1_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/regle1_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/regle2_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/regle2_v.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/regle3_r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/decks/Ralph Azham Le foie de L'axolotl/regle3_v.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,10 +94,21 @@
       <option name="presentableId" value="Default" />
       <updated>1726150208220</updated>
     </task>
+    <task id="LOCAL-00001" summary="trying doing better">
+      <option name="closed" value="true" />
+      <created>1792959908834</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1792959908834</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="trying doing better" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying doing better" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

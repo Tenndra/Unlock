@@ -1,6 +1,4 @@
 from kivy.config import Config
-from kivy.uix.floatlayout import FloatLayout
-from kivy.uix.scatterlayout import ScatterLayout
 
 WIDTH = 1920
 HEIGHT = 1080
