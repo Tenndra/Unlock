@@ -48,7 +48,8 @@ class CardOnTable(Scatter):
         self.on_discard_callback = on_discard
         self.recto = self.deck_path / f"{card_id}_r.jpg"
         self.verso = self.deck_path / f"{card_id}_v.jpg"
-        self.size = (dp(280), dp(430))
+        # Larger default card size; keep the original card aspect ratio.
+        self.size = (dp(360), dp(553))
         self.size_hint = (None, None)
         self.do_translation = True
         self.do_rotation = True
@@ -56,7 +57,12 @@ class CardOnTable(Scatter):
         self.auto_bring_to_front = True
         self.rotation = 0
 
-        panel = BoxLayout(orientation="vertical", spacing=dp(3), padding=dp(4))
+        # Scatter does not lay out its child automatically: keep the panel
+        # synchronized with the Scatter size or the visible card stays small.
+        panel = BoxLayout(orientation="vertical", spacing=dp(3), padding=dp(4),
+                          size_hint=(None, None), size=self.size)
+        panel.bind(size=lambda widget, value: setattr(widget, "size", value))
+        self.bind(size=lambda widget, value: setattr(panel, "size", value))
         self.picture = Image(
             source=str(self.recto),
             fit_mode="contain",
@@ -111,7 +117,7 @@ class TableSurface(FloatLayout):
         self._table_bg.size = self.size
         # Adapt card dimensions to the available table area while preserving
         # the original card proportions (280:430).
-        card_w = min(self.width * 0.20, self.height * 0.35 * 280 / 430)
+        card_w = min(dp(360), self.width * 0.28, self.height * 0.62 * 280 / 430)
         card_h = card_w * 430 / 280
         for card in self.cards.values():
             card.size = (card_w, card_h)
