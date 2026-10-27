@@ -1,7 +1,7 @@
 """Play surface and management of cards currently on the table."""
 
 from kivy.metrics import dp
-from kivy.graphics import Color, Rectangle
+from kivy.graphics import Color, Rectangle, Line
 from kivy.uix.floatlayout import FloatLayout
 
 from card import CardOnTable
@@ -13,8 +13,14 @@ class TableSurface(FloatLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         with self.canvas.before:
-            Color(0.12, 0.19, 0.17, 1)
+            # Dark edge around a muted green felt playing area.
+            Color(0.075, 0.09, 0.09, 1)
             self._table_bg = Rectangle(pos=self.pos, size=self.size)
+            Color(0.12, 0.24, 0.20, 1)
+            self._felt_bg = Rectangle(pos=self.pos, size=self.size)
+            Color(0.42, 0.48, 0.35, 0.65)
+            self._felt_border = Line(rectangle=(self.x, self.y, self.width, self.height),
+                                     width=1.2)
         self.bind(pos=self._sync_table_bg, size=self._sync_table_bg)
         self.cards = {}
         self.discarded = {}
@@ -22,6 +28,13 @@ class TableSurface(FloatLayout):
     def _sync_table_bg(self, *_):
         self._table_bg.pos = self.pos
         self._table_bg.size = self.size
+        inset = dp(9)
+        self._felt_bg.pos = (self.x + inset, self.y + inset)
+        self._felt_bg.size = (max(0, self.width - inset * 2),
+                              max(0, self.height - inset * 2))
+        self._felt_border.rectangle = (self.x + inset, self.y + inset,
+                                       max(0, self.width - inset * 2),
+                                       max(0, self.height - inset * 2))
         # Make cards as large as practical on the table while leaving a
         # little room around them; preserve the original 280:430 proportions.
         card_w = min(self.width * 0.90, self.height * 0.88 * 280 / 430)
