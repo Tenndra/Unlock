@@ -114,9 +114,9 @@ class TableSurface(FloatLayout):
     def _sync_table_bg(self, *_):
         self._table_bg.pos = self.pos
         self._table_bg.size = self.size
-        # Adapt card dimensions to the available table area while preserving
-        # the original card proportions (280:430).
-        card_w = min(dp(360), self.width * 0.28, self.height * 0.62 * 280 / 430)
+        # Make cards as large as practical on the table while leaving a
+        # little room around them; preserve the original 280:430 proportions.
+        card_w = min(self.width * 0.90, self.height * 0.88 * 280 / 430)
         card_h = card_w * 430 / 280
         for card in self.cards.values():
             card.size = (card_w, card_h)
@@ -132,7 +132,8 @@ class TableSurface(FloatLayout):
             self.bring_to_front(card)
             return
         card = CardOnTable(card_id, deck_path, self.discard_card)
-        card_w = min(self.width * 0.20, self.height * 0.35 * 280 / 430)
+        # Use the same maximum-fit sizing as existing cards on the table.
+        card_w = min(self.width * 0.90, self.height * 0.88 * 280 / 430)
         card_h = card_w * 430 / 280
         card.size = (card_w, card_h)
         card.center = (self.width / 2 + (len(self.cards) % 5) * dp(22),
