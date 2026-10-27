@@ -2,7 +2,7 @@ from kivy.config import Config
 
 WIDTH = 1920
 HEIGHT = 1080
-SIDE_BUTTON_WIDTH = 0.025
+SIDE_BUTTON_WIDTH = 0.025 * WIDTH
 
 Config.set('graphics', 'width', str(WIDTH))
 Config.set('graphics', 'height', str(HEIGHT))
@@ -37,7 +37,7 @@ class MainWidget(BoxLayout):
         self.height = HEIGHT
         self.get_card_list()
 
-        button_layout = ButtonLayout(self.card_list, self.pic_a_card, size_hint_x = SIDE_BUTTON_WIDTH)
+        button_layout = ButtonLayout(self.card_list, self.pic_a_card, width = SIDE_BUTTON_WIDTH)
         self.add_widget(button_layout)
 
         self.gameboard_layout = GameboardLayout(DECK, width=WIDTH-SIDE_BUTTON_WIDTH, height=HEIGHT)
@@ -51,7 +51,7 @@ class MainWidget(BoxLayout):
             index = filename.index('_')
             card_name = filename[:index]
             try:
-                int(card_name)
+                str(card_name)
                 if card_name not in self.card_list:
                     self.card_list.append(card_name)
             except ValueError:

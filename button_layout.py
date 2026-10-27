@@ -11,7 +11,6 @@ class ButtonLayout(BoxLayout):
             button = PicButton(card_name, callback)
             self.add_widget(button)
 
-    # Pense à ajouter la carte de départ dans la liste des cartes au cas où on la supprimer
 
 
 class PicButton(Button):

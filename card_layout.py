@@ -1,10 +1,9 @@
 from kivy.properties import StringProperty, ObjectProperty
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.image import Image
-from kivy.uix.scatterlayout import ScatterLayout
 
 
-class CardLayout(ScatterLayout):
+class CardLayout(BoxLayout):
     current_face = StringProperty()
     card_image = ObjectProperty()
     current_rotation = 0
@@ -36,14 +35,14 @@ class CardLayout(ScatterLayout):
 
 class CardImage(Image):
     def on_touch_down(self, touch):
-        image_parent = self.parent.parent.parent.parent.parent  # A améliorer
+        image_parent = self.parent.parent  # A améliorer
         image = ZoomImage(image_parent.current_face)
         image.size_hint = (1, 1)
         target = image_parent.parent.parent
         target.add_widget(image)
 
 
-class ZoomImage(ScatterLayout):
+class ZoomImage(BoxLayout):
     def __init__(self, source, **kwargs):
         super().__init__(**kwargs)
         self.add_widget(Image(source=source))

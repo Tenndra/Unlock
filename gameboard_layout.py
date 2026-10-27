@@ -1,6 +1,6 @@
-from kivy.uix.scatterlayout import ScatterLayout
-
+from kivy.uix.scatter import Scatter
 from card_layout import CardLayout
+
 
 MAX_CARD_NUMBER = 10
 ROWS_NUMBER = MAX_CARD_NUMBER // 5
@@ -10,7 +10,7 @@ SPACING_X = 0.1
 SPACING_Y = 0.1
 
 
-class GameboardLayout(ScatterLayout):
+class GameboardLayout(Scatter):
     card_layout_list = []
     free_position_list = list(range(10))
 
@@ -18,6 +18,7 @@ class GameboardLayout(ScatterLayout):
         super().__init__(**kwargs)
         self.deck = deck
         self.pic_a_card('start')
+        self.size_hint = (1, 1)
 
     def pic_a_card(self, card_number):
         index = self.free_position_list[0]

@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a189ce22-8b32-4318-ac6d-00a3bee56930" name="Changes" comment="probleme with zoom">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/button_layout.kv" beforeDir="false" afterPath="$PROJECT_DIR$/button_layout.kv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/button_layout.py" beforeDir="false" afterPath="$PROJECT_DIR$/button_layout.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/card_layout.kv" beforeDir="false" afterPath="$PROJECT_DIR$/card_layout.kv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/card_layout.py" beforeDir="false" afterPath="$PROJECT_DIR$/card_layout.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gameboard_layout.kv" beforeDir="false" afterPath="$PROJECT_DIR$/gameboard_layout.kv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gameboard_layout.py" beforeDir="false" afterPath="$PROJECT_DIR$/gameboard_layout.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unlock.kv" beforeDir="false" afterPath="$PROJECT_DIR$/unlock.kv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +30,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Tenndra&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Tenndra/Unlock.git&quot;,
+    &quot;accountId&quot;: &quot;485d9c6d-14b6-400a-b38c-ff44055bc5e2&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -33,16 +53,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Python.main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "origin",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/CelineLucas/PycharmProjects/Unlock/ressources/decks"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;origin&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/CelineLucas/PycharmProjects/Unlock/ressources/decks&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\CelineLucas\PycharmProjects\Unlock\ressources\decks" />
@@ -108,7 +129,15 @@
       <option name="project" value="LOCAL" />
       <updated>1792960622412</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="probleme with zoom">
+      <option name="closed" value="true" />
+      <created>1792960725656</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1792960725656</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

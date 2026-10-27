@@ -1,4 +1,11 @@
 #: import gameboard_layout gameboard_layout
 
-<GameBoard>:
-    BoxLayout:
+<GameboardLayout>:
+    size_hint: None, None
+
+    canvas:
+        Color:
+            rgb: 1, 0, 0
+        Rectangle:
+            pos: self.pos
+            size: self.size
