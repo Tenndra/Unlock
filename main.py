@@ -4,10 +4,8 @@ import os
 from pathlib import Path
 
 from kivy.config import Config
-Config.set("graphics", "width", "1440")
-Config.set("graphics", "height", "900")
-Config.set("graphics", "minimum_width", "1000")
-Config.set("graphics", "minimum_height", "650")
+Config.set("graphics", "fullscreen", "auto")
+Config.set("graphics", "resizable", "1")
 Config.set("input", "mouse", "mouse,multitouch_on_demand")
 
 from kivy.app import App
@@ -111,6 +109,12 @@ class TableSurface(FloatLayout):
     def _sync_table_bg(self, *_):
         self._table_bg.pos = self.pos
         self._table_bg.size = self.size
+        # Adapt card dimensions to the available table area while preserving
+        # the original card proportions (280:430).
+        card_w = min(self.width * 0.20, self.height * 0.35 * 280 / 430)
+        card_h = card_w * 430 / 280
+        for card in self.cards.values():
+            card.size = (card_w, card_h)
 
     def add_card(self, card_id, deck_path):
         if card_id in self.discarded:
@@ -123,6 +127,9 @@ class TableSurface(FloatLayout):
             self.bring_to_front(card)
             return
         card = CardOnTable(card_id, deck_path, self.discard_card)
+        card_w = min(self.width * 0.20, self.height * 0.35 * 280 / 430)
+        card_h = card_w * 430 / 280
+        card.size = (card_w, card_h)
         card.center = (self.width / 2 + (len(self.cards) % 5) * dp(22),
                        self.height / 2 + (len(self.cards) % 4) * dp(18))
         self.cards[card_id] = card
