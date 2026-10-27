@@ -23,7 +23,14 @@ from table import TableSurface
 
 ROOT = Path(__file__).resolve().parent
 DECKS_DIR = ROOT / "ressources" / "decks"
-Window.clearcolor = (0.08, 0.10, 0.12, 1)
+# Palette: dark slate, warm ivory and restrained brass accents.
+INK = (0.055, 0.075, 0.09, 1)
+PANEL = (0.09, 0.12, 0.14, 1)
+PANEL_LIGHT = (0.14, 0.18, 0.20, 1)
+BRASS = (0.78, 0.61, 0.31, 1)
+IVORY = (0.94, 0.92, 0.85, 1)
+MUTED = (0.66, 0.70, 0.69, 1)
+Window.clearcolor = INK
 
 
 def readable_name(path: Path) -> str:
@@ -37,14 +44,27 @@ class UnlockTableApp(App):
         self.deck_path = None
         self.card_ids = []
         self.card_buttons = {}
-        root = BoxLayout(orientation="vertical", spacing=dp(1))
+        root = BoxLayout(orientation="vertical", spacing=dp(2), padding=dp(5))
+        with root.canvas.before:
+            from kivy.graphics import Color, Rectangle
+            Color(*INK)
+            self._root_bg = Rectangle(pos=root.pos, size=root.size)
+        root.bind(pos=lambda w, *_: setattr(self._root_bg, "pos", w.pos),
+                  size=lambda w, *_: setattr(self._root_bg, "size", w.size))
         root.add_widget(self.build_toolbar())
 
-        body = BoxLayout(spacing=dp(1))
+        body = BoxLayout(spacing=dp(5))
         # A narrower sidebar leaves more room for the play area.
         sidebar = BoxLayout(orientation="vertical", size_hint_x=None, width=dp(180),
-                            padding=dp(4), spacing=dp(3))
-        sidebar.add_widget(Label(text="CARTES DU PAQUET", size_hint_y=None, height=dp(24),
+                            padding=dp(7), spacing=dp(5))
+        with sidebar.canvas.before:
+            from kivy.graphics import Color, Rectangle
+            Color(*PANEL)
+            self._sidebar_bg = Rectangle(pos=sidebar.pos, size=sidebar.size)
+        sidebar.bind(pos=lambda w, *_: setattr(self._sidebar_bg, "pos", w.pos),
+                     size=lambda w, *_: setattr(self._sidebar_bg, "size", w.size))
+        sidebar.add_widget(Label(text="[b]CARTES DU PAQUET[/b]", markup=True,
+                                 size_hint_y=None, height=dp(28), color=BRASS,
                                  bold=True, font_size=dp(11)))
         self.card_scroll = ScrollView(do_scroll_x=False, do_scroll_y=True, bar_width=dp(3))
         self.card_list_box = BoxLayout(orientation="vertical", size_hint_y=None,
@@ -62,21 +82,37 @@ class UnlockTableApp(App):
         return root
 
     def build_toolbar(self):
-        bar = BoxLayout(size_hint_y=None, height=dp(54), padding=(dp(8), dp(6)), spacing=dp(8))
-        title = Label(text="UNLOCK  /  TABLE VIRTUELLE", bold=True, size_hint_x=None,
-                      width=dp(260), font_size=dp(16), halign="left", valign="middle")
+        bar = BoxLayout(size_hint_y=None, height=dp(58), padding=(dp(12), dp(7)),
+                        spacing=dp(9))
+        with bar.canvas.before:
+            from kivy.graphics import Color, Rectangle
+            Color(*PANEL)
+            self._toolbar_bg = Rectangle(pos=bar.pos, size=bar.size)
+        bar.bind(pos=lambda w, *_: setattr(self._toolbar_bg, "pos", w.pos),
+                 size=lambda w, *_: setattr(self._toolbar_bg, "size", w.size))
+        title = Label(text="[b]UNLOCK[/b]  [color=#C79C50]•[/color]  TABLE VIRTUELLE",
+                      markup=True, color=IVORY, bold=True, size_hint_x=None,
+                      width=dp(280), font_size=dp(16), halign="left", valign="middle")
         title.bind(size=lambda w, *_: setattr(w, "text_size", w.size))
         bar.add_widget(title)
         decks = self.available_decks()
         self.deck_spinner = Spinner(text=decks[0] if decks else "Aucun paquet",
-                                    values=decks, size_hint_x=None, width=dp(280))
+                                    values=decks, size_hint_x=None, width=dp(280),
+                                    background_normal="", background_color=PANEL_LIGHT,
+                                    color=IVORY, font_size=dp(13))
         self.deck_spinner.bind(text=lambda _spinner, value: self.load_deck(value))
         bar.add_widget(self.deck_spinner)
         bar.add_widget(Widget())
-        help_button = Button(text="Aide", size_hint_x=None, width=dp(85))
+        help_button = Button(text="?  Aide", size_hint_x=None, width=dp(90),
+                             background_normal="", background_down="",
+                             background_color=PANEL_LIGHT, color=IVORY,
+                             font_size=dp(12))
         help_button.bind(on_release=lambda *_: self.show_help())
         bar.add_widget(help_button)
-        discard_button = Button(text="Défausse", size_hint_x=None, width=dp(110))
+        discard_button = Button(text="♧  Défausse", size_hint_x=None, width=dp(120),
+                                background_normal="", background_down="",
+                                background_color=BRASS, color=INK,
+                                font_size=dp(12), bold=True)
         discard_button.bind(on_release=lambda *_: self.show_discard())
         bar.add_widget(discard_button)
         return bar
@@ -122,7 +158,9 @@ class UnlockTableApp(App):
                             font_size=max(dp(6), min(dp(10), button_size * 0.48)),
                             halign="center", valign="middle",
                             text_size=(button_size - dp(2), button_size - dp(2)),
-                            padding=(0, 0))
+                            padding=(0, 0), background_normal="",
+                            background_down="", background_color=PANEL_LIGHT,
+                            color=IVORY)
             button.bind(on_release=lambda _button, value=card_id: self.add_card(value))
             self.card_list_box.add_widget(button)
             self.card_buttons[card_id] = button
