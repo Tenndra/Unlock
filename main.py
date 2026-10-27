@@ -61,7 +61,6 @@ class CardOnTable(Scatter):
         # synchronized with the Scatter size or the visible card stays small.
         panel = BoxLayout(orientation="vertical", spacing=dp(3), padding=dp(4),
                           size_hint=(None, None), size=self.size)
-        panel.bind(size=lambda widget, value: setattr(widget, "size", value))
         self.bind(size=lambda widget, value: setattr(panel, "size", value))
         self.picture = Image(
             source=str(self.recto),
