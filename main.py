@@ -55,7 +55,7 @@ class UnlockTableApp(App):
 
         body = BoxLayout(spacing=dp(5))
         # A narrower sidebar leaves more room for the play area.
-        sidebar = BoxLayout(orientation="vertical", size_hint_x=None, width=dp(180),
+        sidebar = BoxLayout(orientation="vertical", size_hint_x=None, width=dp(112),
                             padding=dp(7), spacing=dp(5))
         with sidebar.canvas.before:
             from kivy.graphics import Color, Rectangle
