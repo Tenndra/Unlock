@@ -50,7 +50,7 @@ class CardOnTable(Scatter):
         self.on_discard_callback = on_discard
         self.recto = self.deck_path / f"{card_id}_r.jpg"
         self.verso = self.deck_path / f"{card_id}_v.jpg"
-        self.size = (dp(190), dp(290))
+        self.size = (dp(280), dp(430))
         self.size_hint = (None, None)
         self.do_translation = True
         self.do_rotation = True
