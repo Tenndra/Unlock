@@ -177,10 +177,12 @@ class UnlockTableApp(App):
                             padding=dp(4), spacing=dp(3))
         sidebar.add_widget(Label(text="CARTES DU PAQUET", size_hint_y=None, height=dp(24),
                                  bold=True, font_size=dp(11)))
-        self.card_scroll = ScrollView(do_scroll_x=False)
-        self.card_list_box = BoxLayout(orientation="vertical", size_hint_y=None, spacing=dp(2))
+        self.card_scroll = ScrollView(do_scroll_x=False, do_scroll_y=True, bar_width=dp(3))
+        self.card_list_box = BoxLayout(orientation="vertical", size_hint_y=None,
+                                        spacing=dp(1), padding=(0, dp(1)))
         self.card_list_box.bind(minimum_height=self.card_list_box.setter("height"))
         self.card_scroll.add_widget(self.card_list_box)
+        self.card_scroll.bind(size=lambda *_: self._resize_card_buttons())
         sidebar.add_widget(self.card_scroll)
         body.add_widget(sidebar)
 
@@ -238,14 +240,30 @@ class UnlockTableApp(App):
             return
         self.card_list_box.clear_widgets()
         self.card_buttons.clear()
+        count = len(self.card_ids)
+        if count == 0:
+            self.card_list_box.height = 0
+            return
+        # Fit every card button into the visible list area; each button is square.
+        available_h = max(1, self.card_scroll.height - dp(2))
+        button_size = max(1, (available_h - dp(count - 1)) / count)
         for card_id in self.card_ids:
-            button = Button(text=card_id, size_hint_y=None, height=dp(27),
-                            font_size=dp(10), halign="left",
-                            text_size=(dp(160), None), padding=(dp(4), 0))
+            button = Button(text=card_id, size_hint=(None, None),
+                            width=button_size, height=button_size,
+                            font_size=max(dp(6), min(dp(10), button_size * 0.48)),
+                            halign="center", valign="middle",
+                            text_size=(button_size - dp(2), button_size - dp(2)),
+                            padding=(0, 0))
             button.bind(on_release=lambda _button, value=card_id: self.add_card(value))
             self.card_list_box.add_widget(button)
             self.card_buttons[card_id] = button
             self.update_card_button(card_id)
+        self.card_list_box.height = count * button_size + max(0, count - 1) * dp(1) + dp(2)
+
+    def _resize_card_buttons(self):
+        # Recalculate sizes after the window or available sidebar height changes.
+        if hasattr(self, "card_list_box") and self.card_ids:
+            self.refresh_card_list()
 
     def add_card(self, card_id):
         if self.deck_path is None:
