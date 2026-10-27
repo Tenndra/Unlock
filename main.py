@@ -1,6 +1,5 @@
-from __future__ import annotations
+"""Application entry point and main user interface."""
 
-import os
 from pathlib import Path
 
 from kivy.config import Config
@@ -9,21 +8,17 @@ Config.set("graphics", "resizable", "1")
 Config.set("input", "mouse", "mouse,multitouch_on_demand")
 
 from kivy.app import App
-from kivy.clock import Clock
 from kivy.core.window import Window
 from kivy.metrics import dp
-from kivy.properties import BooleanProperty, StringProperty
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
-from kivy.uix.floatlayout import FloatLayout
-from kivy.uix.image import Image
 from kivy.uix.label import Label
 from kivy.uix.popup import Popup
-from kivy.uix.scatter import Scatter
 from kivy.uix.scrollview import ScrollView
 from kivy.uix.spinner import Spinner
 from kivy.uix.widget import Widget
-from kivy.graphics import Color, Rectangle
+
+from table import TableSurface
 
 
 ROOT = Path(__file__).resolve().parent
@@ -33,141 +28,6 @@ Window.clearcolor = (0.08, 0.10, 0.12, 1)
 
 def readable_name(path: Path) -> str:
     return path.stem[:-2]
-
-
-class CardOnTable(Scatter):
-    """A single physical-style card: only this widget moves and rotates."""
-
-    card_id = StringProperty("")
-    face_up = BooleanProperty(True)
-
-    def __init__(self, card_id, deck_path, on_discard, **kwargs):
-        super().__init__(**kwargs)
-        self.card_id = card_id
-        self.deck_path = Path(deck_path)
-        self.on_discard_callback = on_discard
-        self.recto = self.deck_path / f"{card_id}_r.jpg"
-        self.verso = self.deck_path / f"{card_id}_v.jpg"
-        # Larger default card size; keep the original card aspect ratio.
-        self.size = (dp(360), dp(553))
-        self.size_hint = (None, None)
-        self.do_translation = True
-        self.do_rotation = True
-        self.do_scale = False
-        self.auto_bring_to_front = True
-        self.rotation = 0
-
-        # Scatter does not lay out its child automatically: keep the panel
-        # synchronized with the Scatter size or the visible card stays small.
-        panel = BoxLayout(orientation="vertical", spacing=dp(1), padding=dp(2),
-                          size_hint=(None, None), size=self.size)
-        self.bind(size=lambda widget, value: setattr(panel, "size", value))
-        self.picture = Image(
-            source=str(self.recto),
-            fit_mode="contain",
-            allow_stretch=True,
-        )
-        panel.add_widget(self.picture)
-
-        controls = BoxLayout(size_hint_y=None, height=dp(24), spacing=dp(1))
-        turn_button = Button(text="Face", font_size=dp(9), padding=(dp(1), 0))
-        turn_button.bind(on_release=lambda *_: self.turn_card())
-        discard_button = Button(text="Jeter", font_size=dp(9), padding=(dp(1), 0))
-        discard_button.bind(on_release=lambda *_: self.discard())
-        controls.add_widget(turn_button)
-        controls.add_widget(discard_button)
-        panel.add_widget(controls)
-        self.add_widget(panel)
-
-    def on_touch_down(self, touch):
-        # Mouse wheel acts only on the card under the pointer.
-        # Ctrl + wheel rotates; wheel alone changes this card's visual scale.
-        if getattr(touch, "button", None) in ("scrollup", "scrolldown"):
-            if self.collide_point(*touch.pos):
-                direction = 1 if touch.button == "scrollup" else -1
-                modifiers = getattr(touch, "modifiers", []) or []
-                if "ctrl" in modifiers:
-                    self.rotate_card(5 * direction)
-                else:
-                    factor = 1.1 if direction > 0 else 1 / 1.1
-                    self.scale = max(0.45, min(2.5, self.scale * factor))
-                return True
-        return super().on_touch_down(touch)
-
-    def turn_card(self):
-        self.face_up = not self.face_up
-        candidate = self.recto if self.face_up else self.verso
-        if candidate.exists():
-            self.picture.source = str(candidate)
-            self.picture.reload()
-
-    def rotate_card(self, angle):
-        self.rotation = (self.rotation + angle) % 360
-
-    def discard(self):
-        self.on_discard_callback(self)
-
-
-class TableSurface(FloatLayout):
-    """Fixed table surface. Card Scatter widgets are independent children."""
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        with self.canvas.before:
-            Color(0.12, 0.19, 0.17, 1)
-            self._table_bg = Rectangle(pos=self.pos, size=self.size)
-        self.bind(pos=self._sync_table_bg, size=self._sync_table_bg)
-        self.cards = {}
-        self.discarded = {}
-
-    def _sync_table_bg(self, *_):
-        self._table_bg.pos = self.pos
-        self._table_bg.size = self.size
-        # Make cards as large as practical on the table while leaving a
-        # little room around them; preserve the original 280:430 proportions.
-        card_w = min(self.width * 0.90, self.height * 0.88 * 280 / 430)
-        card_h = card_w * 430 / 280
-        for card in self.cards.values():
-            card.size = (card_w, card_h)
-
-    def add_card(self, card_id, deck_path):
-        if card_id in self.discarded:
-            self.restore_card(card_id)
-            return
-        if card_id in self.cards:
-            card = self.cards[card_id]
-            card.center = self.center
-            card.rotation = 0
-            self.bring_to_front(card)
-            return
-        card = CardOnTable(card_id, deck_path, self.discard_card)
-        # Use the same maximum-fit sizing as existing cards on the table.
-        card_w = min(self.width * 0.90, self.height * 0.88 * 280 / 430)
-        card_h = card_w * 430 / 280
-        card.size = (card_w, card_h)
-        card.center = (self.width / 2 + (len(self.cards) % 5) * dp(22),
-                       self.height / 2 + (len(self.cards) % 4) * dp(18))
-        self.cards[card_id] = card
-        self.add_widget(card)
-
-    def bring_to_front(self, card):
-        if card.parent is self:
-            self.remove_widget(card)
-            self.add_widget(card)
-
-    def discard_card(self, card):
-        self.cards.pop(card.card_id, None)
-        if card.parent is self:
-            self.remove_widget(card)
-        self.discarded[card.card_id] = card
-
-    def restore_card(self, card_id):
-        card = self.discarded.pop(card_id, None)
-        if card is None:
-            return
-        self.cards[card_id] = card
-        card.center = self.center
-        self.add_widget(card)
 
 
 class UnlockTableApp(App):
