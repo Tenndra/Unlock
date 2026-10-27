@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a189ce22-8b32-4318-ac6d-00a3bee56930" name="Changes" comment="probleme with zoom">
+    <list default="true" id="a189ce22-8b32-4318-ac6d-00a3bee56930" name="Changes" comment="for GPT">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/button_layout.kv" beforeDir="false" afterPath="$PROJECT_DIR$/button_layout.kv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/button_layout.py" beforeDir="false" afterPath="$PROJECT_DIR$/button_layout.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/card_layout.kv" beforeDir="false" afterPath="$PROJECT_DIR$/card_layout.kv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/card_layout.py" beforeDir="false" afterPath="$PROJECT_DIR$/card_layout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gameboard_layout.kv" beforeDir="false" afterPath="$PROJECT_DIR$/gameboard_layout.kv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gameboard_layout.py" beforeDir="false" afterPath="$PROJECT_DIR$/gameboard_layout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unlock.kv" beforeDir="false" afterPath="$PROJECT_DIR$/unlock.kv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,14 +132,46 @@
       <option name="project" value="LOCAL" />
       <updated>1792960725656</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="for GPT">
+      <option name="closed" value="true" />
+      <created>1793128139002</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1793128139002</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="trying doing better" />
     <MESSAGE value="probleme with zoom" />
-    <option name="LAST_COMMIT_MESSAGE" value="probleme with zoom" />
+    <MESSAGE value="for GPT" />
+    <option name="LAST_COMMIT_MESSAGE" value="for GPT" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
