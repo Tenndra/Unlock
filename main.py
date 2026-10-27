@@ -72,18 +72,27 @@ class CardOnTable(Scatter):
         controls = BoxLayout(size_hint_y=None, height=dp(24), spacing=dp(1))
         turn_button = Button(text="Face", font_size=dp(9), padding=(dp(1), 0))
         turn_button.bind(on_release=lambda *_: self.turn_card())
-        left_button = Button(text="↶", size_hint_x=None, width=dp(24), font_size=dp(13))
-        left_button.bind(on_release=lambda *_: self.rotate_card(-15))
-        right_button = Button(text="↷", size_hint_x=None, width=dp(24), font_size=dp(13))
-        right_button.bind(on_release=lambda *_: self.rotate_card(15))
         discard_button = Button(text="Jeter", font_size=dp(9), padding=(dp(1), 0))
         discard_button.bind(on_release=lambda *_: self.discard())
-        controls.add_widget(left_button)
         controls.add_widget(turn_button)
-        controls.add_widget(right_button)
         controls.add_widget(discard_button)
         panel.add_widget(controls)
         self.add_widget(panel)
+
+    def on_touch_down(self, touch):
+        # Mouse wheel acts only on the card under the pointer.
+        # Ctrl + wheel rotates; wheel alone changes this card's visual scale.
+        if getattr(touch, "button", None) in ("scrollup", "scrolldown"):
+            if self.collide_point(*touch.pos):
+                direction = 1 if touch.button == "scrollup" else -1
+                modifiers = getattr(touch, "modifiers", []) or []
+                if "ctrl" in modifiers:
+                    self.rotate_card(5 * direction)
+                else:
+                    factor = 1.1 if direction > 0 else 1 / 1.1
+                    self.scale = max(0.45, min(2.5, self.scale * factor))
+                return True
+        return super().on_touch_down(touch)
 
     def turn_card(self):
         self.face_up = not self.face_up
@@ -311,9 +320,10 @@ class UnlockTableApp(App):
     def show_help(self):
         text = ("• Clique sur une carte à gauche pour la poser sur la table.\n"
                 "• Fais glisser une carte pour la déplacer.\n"
-                "• Utilise deux doigts pour la faire pivoter, ou les boutons ↶ / ↷.\n"
-                "• « Retourner » affiche le recto ou le verso.\n"
-                "• « Défausser » retire la carte ; le menu Défausse permet de la restaurer.\n"
+                "• Molette au-dessus d’une carte : agrandir ou réduire cette carte.\n"
+                "• Ctrl + molette au-dessus d’une carte : la faire pivoter.\n"
+                "• « Face » affiche le recto ou le verso.\n"
+                "• « Jeter » retire la carte ; le menu Défausse permet de la restaurer.\n"
                 "• Une carte déjà sur la table ne peut pas être ajoutée une seconde fois.")
         Popup(title="Aide", content=Label(text=text), size_hint=(0.6, 0.5)).open()
 
