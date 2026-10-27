@@ -59,7 +59,7 @@ class CardOnTable(Scatter):
 
         # Scatter does not lay out its child automatically: keep the panel
         # synchronized with the Scatter size or the visible card stays small.
-        panel = BoxLayout(orientation="vertical", spacing=dp(3), padding=dp(4),
+        panel = BoxLayout(orientation="vertical", spacing=dp(1), padding=dp(2),
                           size_hint=(None, None), size=self.size)
         self.bind(size=lambda widget, value: setattr(panel, "size", value))
         self.picture = Image(
@@ -69,14 +69,14 @@ class CardOnTable(Scatter):
         )
         panel.add_widget(self.picture)
 
-        controls = BoxLayout(size_hint_y=None, height=dp(34), spacing=dp(3))
-        turn_button = Button(text="Retourner", font_size=dp(12))
+        controls = BoxLayout(size_hint_y=None, height=dp(24), spacing=dp(1))
+        turn_button = Button(text="Face", font_size=dp(9), padding=(dp(1), 0))
         turn_button.bind(on_release=lambda *_: self.turn_card())
-        left_button = Button(text="↶", size_hint_x=None, width=dp(38), font_size=dp(18))
+        left_button = Button(text="↶", size_hint_x=None, width=dp(24), font_size=dp(13))
         left_button.bind(on_release=lambda *_: self.rotate_card(-15))
-        right_button = Button(text="↷", size_hint_x=None, width=dp(38), font_size=dp(18))
+        right_button = Button(text="↷", size_hint_x=None, width=dp(24), font_size=dp(13))
         right_button.bind(on_release=lambda *_: self.rotate_card(15))
-        discard_button = Button(text="Défausser", font_size=dp(12))
+        discard_button = Button(text="Jeter", font_size=dp(9), padding=(dp(1), 0))
         discard_button.bind(on_release=lambda *_: self.discard())
         controls.add_widget(left_button)
         controls.add_widget(turn_button)
@@ -172,12 +172,13 @@ class UnlockTableApp(App):
         root.add_widget(self.build_toolbar())
 
         body = BoxLayout(spacing=dp(1))
-        sidebar = BoxLayout(orientation="vertical", size_hint_x=None, width=dp(245),
-                            padding=dp(8), spacing=dp(6))
-        sidebar.add_widget(Label(text="CARTES DU PAQUET", size_hint_y=None, height=dp(28),
-                                 bold=True, font_size=dp(13)))
+        # A narrower sidebar leaves more room for the play area.
+        sidebar = BoxLayout(orientation="vertical", size_hint_x=None, width=dp(180),
+                            padding=dp(4), spacing=dp(3))
+        sidebar.add_widget(Label(text="CARTES DU PAQUET", size_hint_y=None, height=dp(24),
+                                 bold=True, font_size=dp(11)))
         self.card_scroll = ScrollView(do_scroll_x=False)
-        self.card_list_box = BoxLayout(orientation="vertical", size_hint_y=None, spacing=dp(4))
+        self.card_list_box = BoxLayout(orientation="vertical", size_hint_y=None, spacing=dp(2))
         self.card_list_box.bind(minimum_height=self.card_list_box.setter("height"))
         self.card_scroll.add_widget(self.card_list_box)
         sidebar.add_widget(self.card_scroll)
@@ -238,8 +239,9 @@ class UnlockTableApp(App):
         self.card_list_box.clear_widgets()
         self.card_buttons.clear()
         for card_id in self.card_ids:
-            button = Button(text=card_id, size_hint_y=None, height=dp(40),
-                            halign="left", text_size=(dp(210), None))
+            button = Button(text=card_id, size_hint_y=None, height=dp(27),
+                            font_size=dp(10), halign="left",
+                            text_size=(dp(160), None), padding=(dp(4), 0))
             button.bind(on_release=lambda _button, value=card_id: self.add_card(value))
             self.card_list_box.add_widget(button)
             self.card_buttons[card_id] = button
