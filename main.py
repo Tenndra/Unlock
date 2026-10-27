@@ -59,11 +59,6 @@ class CardOnTable(Scatter):
         self.rotation = 0
 
         panel = BoxLayout(orientation="vertical", spacing=dp(3), padding=dp(4))
-        with panel.canvas.before:
-            Color(0.12, 0.13, 0.15, 1)
-            self._panel_bg = Rectangle(pos=panel.pos, size=panel.size)
-        panel.bind(pos=self._sync_bg, size=self._sync_bg)
-
         self.picture = Image(
             source=str(self.recto),
             fit_mode="contain",
@@ -86,11 +81,6 @@ class CardOnTable(Scatter):
         controls.add_widget(discard_button)
         panel.add_widget(controls)
         self.add_widget(panel)
-
-    @staticmethod
-    def _sync_bg(widget, *_):
-        # The background rectangle is maintained by the instance binding below.
-        pass
 
     def turn_card(self):
         self.face_up = not self.face_up
@@ -123,6 +113,9 @@ class TableSurface(FloatLayout):
         self._table_bg.size = self.size
 
     def add_card(self, card_id, deck_path):
+        if card_id in self.discarded:
+            self.restore_card(card_id)
+            return
         if card_id in self.cards:
             card = self.cards[card_id]
             card.center = self.center
@@ -214,6 +207,12 @@ class UnlockTableApp(App):
         path = DECKS_DIR / deck_name
         if not path.is_dir():
             return
+        # Switching packages starts a clean table so cards from different decks
+        # are never mixed accidentally.
+        if hasattr(self, "table"):
+            self.table.clear_widgets()
+            self.table.cards.clear()
+            self.table.discarded.clear()
         self.deck_path = path
         # A card is identified by the common filename prefix of *_r.jpg / *_v.jpg.
         rectos = sorted(path.glob("*_r.jpg"), key=lambda p: p.name.lower())
