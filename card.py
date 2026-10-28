@@ -5,10 +5,10 @@ from pathlib import Path
 from kivy.core.window import Window
 from kivy.metrics import dp
 from kivy.properties import BooleanProperty, StringProperty
-from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.button import Button
 from kivy.uix.image import Image
 from kivy.uix.scatter import Scatter
+
+from ui import BrassButton, CardActionButton, CardControls, CardFrame
 
 
 class CardOnTable(Scatter):
@@ -35,14 +35,8 @@ class CardOnTable(Scatter):
 
         # Scatter does not lay out its child automatically: keep the panel
         # synchronized with the Scatter size or the visible card stays small.
-        panel = BoxLayout(orientation="vertical", spacing=dp(3), padding=dp(3),
+        panel = CardFrame(orientation="vertical", spacing=dp(3), padding=dp(3),
                           size_hint=(None, None), size=self.size)
-        with panel.canvas.before:
-            from kivy.graphics import Color, Rectangle
-            Color(0.055, 0.065, 0.07, 1)
-            self._card_frame = Rectangle(pos=panel.pos, size=panel.size)
-        panel.bind(pos=lambda w, *_: setattr(self._card_frame, "pos", w.pos),
-                   size=lambda w, *_: setattr(self._card_frame, "size", w.size))
         self.bind(size=lambda widget, value: setattr(panel, "size", value))
         self.picture = Image(
             source=str(self.recto),
@@ -51,16 +45,10 @@ class CardOnTable(Scatter):
         )
         panel.add_widget(self.picture)
 
-        controls = BoxLayout(size_hint_y=None, height=dp(28), spacing=dp(3))
-        turn_button = Button(text="↻  Face", font_size=dp(10), padding=(dp(1), 0),
-                             background_normal="", background_down="",
-                             background_color=(0.78, 0.61, 0.31, 1),
-                             color=(0.055, 0.075, 0.09, 1), bold=True)
+        controls = CardControls()
+        turn_button = BrassButton(text="↻  Face", font_size=dp(10), padding=(dp(1), 0))
         turn_button.bind(on_release=lambda *_: self.turn_card())
-        discard_button = Button(text="Jeter", font_size=dp(10), padding=(dp(1), 0),
-                                background_normal="", background_down="",
-                                background_color=(0.20, 0.23, 0.24, 1),
-                                color=(0.94, 0.92, 0.85, 1))
+        discard_button = CardActionButton(text="Jeter")
         discard_button.bind(on_release=lambda *_: self.discard())
         controls.add_widget(turn_button)
         controls.add_widget(discard_button)
