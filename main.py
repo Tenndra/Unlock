@@ -23,6 +23,8 @@ from table import TableSurface
 
 ROOT = Path(__file__).resolve().parent
 DECKS_DIR = ROOT / "ressources" / "decks"
+
+
 class AppRoot(BoxLayout):
     """Root widget; its appearance is defined in main.kv."""
 
@@ -81,7 +83,6 @@ class UnlockTableApp(App):
         root.add_widget(self.build_toolbar())
 
         body = BodyPanel()
-        # A narrower sidebar leaves more room for the play area.
         sidebar = SidebarPanel()
         sidebar.add_widget(SectionTitle(text="[b]CARTES DU PAQUET[/b]"))
         self.card_scroll = ScrollView(do_scroll_x=False, do_scroll_y=True, bar_width=dp(3))
@@ -94,9 +95,12 @@ class UnlockTableApp(App):
         body.add_widget(sidebar)
 
         self.table = TableSurface()
+        self.table.on_open_discard = self.show_discard
+        self.table.on_card_discarded = self.update_card_button
         body.add_widget(self.table)
         root.add_widget(body)
-        self.load_deck(self.deck_spinner.text if hasattr(self, "deck_spinner") else self.available_decks()[0])
+        decks = self.available_decks()
+        self.load_deck(self.deck_spinner.text if hasattr(self, "deck_spinner") else (decks[0] if decks else ""))
         return root
 
     def build_toolbar(self):
@@ -127,14 +131,15 @@ class UnlockTableApp(App):
         path = DECKS_DIR / deck_name
         if not path.is_dir():
             return
-        # Switching packages starts a clean table so cards from different decks
-        # are never mixed accidentally.
         if hasattr(self, "table"):
             self.table.clear_widgets()
             self.table.cards.clear()
             self.table.discarded.clear()
+            self.table.add_widget(self.table.discard_pile)
+            self.table.discard_pile.count = 0
+            self.table.discard_pile.image_source = ""
+            self.table._sync_table_layout()
         self.deck_path = path
-        # A card is identified by the common filename prefix of *_r.jpg / *_v.jpg.
         rectos = sorted(path.glob("*_r.jpg"), key=lambda p: p.name.lower())
         self.card_ids = [readable_name(p) for p in rectos]
         self.refresh_card_list()
@@ -148,7 +153,6 @@ class UnlockTableApp(App):
         if count == 0:
             self.card_list_box.height = 0
             return
-        # Fit every card button into the visible list area; each button is square.
         available_h = max(1, self.card_scroll.height - dp(2))
         button_size = max(1, (available_h - dp(count - 1)) / count)
         for card_id in self.card_ids:
@@ -163,7 +167,6 @@ class UnlockTableApp(App):
         self.card_list_box.height = count * button_size + max(0, count - 1) * dp(1) + dp(2)
 
     def _resize_card_buttons(self):
-        # Recalculate sizes after the window or available sidebar height changes.
         if hasattr(self, "card_list_box") and self.card_ids:
             self.refresh_card_list()
 
@@ -192,8 +195,8 @@ class UnlockTableApp(App):
                 row.add_widget(Label(text=card_id))
                 restore = DarkButton(text="Remettre en jeu")
                 restore.bind(on_release=lambda _btn, value=card_id: self.restore_from_discard(value))
-                row.add_widget(restore)
                 entries.add_widget(row)
+                row.add_widget(restore)
             scroll.add_widget(entries)
             content.add_widget(scroll)
         close = DarkButton(text="Fermer")
@@ -212,11 +215,11 @@ class UnlockTableApp(App):
 
     def show_help(self):
         text = ("• Clique sur une carte à gauche pour la poser sur la table.\n"
-                "• Fais glisser une carte pour la déplacer.\n"
+                "• Fais glisser une carte pour la déplacer ou la déposer dans la zone Défausse.\n"
+                "• Double-clic sur une carte : la retourner.\n"
                 "• Molette au-dessus d’une carte : agrandir ou réduire cette carte.\n"
                 "• Ctrl + molette au-dessus d’une carte : la faire pivoter.\n"
-                "• « Face » affiche le recto ou le verso.\n"
-                "• « Jeter » retire la carte ; le menu Défausse permet de la restaurer.\n"
+                "• Clique sur la pile Défausse pour consulter ou restaurer une carte.\n"
                 "• Une carte déjà sur la table ne peut pas être ajoutée une seconde fois.")
         Popup(title="Aide", content=Label(text=text), size_hint=(0.6, 0.5)).open()
 
