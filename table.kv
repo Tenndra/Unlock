@@ -1,0 +1,22 @@
+#:import dp kivy.metrics.dp
+
+<TableSurface>:
+    canvas.before:
+        # Dark outer edge
+        Color:
+            rgba: 0.075, 0.09, 0.09, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+        # Muted green felt
+        Color:
+            rgba: 0.12, 0.24, 0.20, 1
+        Rectangle:
+            pos: self.x + dp(9), self.y + dp(9)
+            size: max(0, self.width - dp(18)), max(0, self.height - dp(18))
+        # Fine, understated border
+        Color:
+            rgba: 0.42, 0.48, 0.35, 0.65
+        Line:
+            rectangle: self.x + dp(9), self.y + dp(9), max(0, self.width - dp(18)), max(0, self.height - dp(18))
+            width: 1.2
