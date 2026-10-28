@@ -20,3 +20,25 @@
         Line:
             rectangle: self.x + dp(9), self.y + dp(9), max(0, self.width - dp(18)), max(0, self.height - dp(18))
             width: 1.2
+
+<DiscardPile>:
+    canvas.before:
+        Color:
+            rgba: 0.055, 0.075, 0.09, 0.94
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [dp(7)]
+        Color:
+            rgba: 0.78, 0.61, 0.31, 0.9
+        Line:
+            rounded_rectangle: (self.x, self.y, self.width, self.height, dp(7))
+            width: 1.1
+
+<DiscardPile>:
+    title:
+        color: 0.94, 0.92, 0.85, 1
+    thumbnail:
+        color: 1, 1, 1, 1
+    hint:
+        color: 0.78, 0.61, 0.31, 1
