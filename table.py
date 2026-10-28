@@ -45,6 +45,9 @@ class DiscardPile(BoxLayout):
             height=dp(16),
             font_size=dp(9),
         )
+        self.title.color = (0.94, 0.92, 0.85, 1)
+        self.thumbnail.color = (1, 1, 1, 1)
+        self.hint.color = (0.78, 0.61, 0.31, 1)
         self.add_widget(self.title)
         self.add_widget(self.thumbnail)
         self.add_widget(self.hint)
