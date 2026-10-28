@@ -10,6 +10,7 @@ Config.set("input", "mouse", "mouse,multitouch_on_demand")
 from kivy.app import App
 from kivy.metrics import dp
 from kivy.lang import Builder
+from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.uix.popup import Popup
@@ -18,13 +19,47 @@ from kivy.uix.spinner import Spinner
 from kivy.uix.widget import Widget
 
 from table import TableSurface
-from ui import AppRoot, BrassButton, DarkButton, DeckCardButton, HelpButton, SectionTitle, SidebarPanel, ToolbarPanel, ToolbarTitle
 
 
 ROOT = Path(__file__).resolve().parent
 DECKS_DIR = ROOT / "ressources" / "decks"
-Builder.load_file(str(ROOT / "styles.kv"))
-Builder.load_file(str(ROOT / "table.kv"))
+class AppRoot(BoxLayout):
+    """Root widget; its appearance is defined in main.kv."""
+
+
+class ToolbarPanel(BoxLayout):
+    """Top toolbar."""
+
+
+class SidebarPanel(BoxLayout):
+    """Deck list panel."""
+
+
+class BrassButton(Button):
+    """Primary brass-colored action button."""
+
+
+class DarkButton(Button):
+    """Secondary dark action button."""
+
+
+class HelpButton(Button):
+    """Toolbar help button."""
+
+
+class DeckCardButton(Button):
+    """Button representing a card in the deck."""
+
+
+class SectionTitle(Label):
+    """Heading for the deck list."""
+
+
+class ToolbarTitle(Label):
+    """Title displayed in the toolbar."""
+
+
+Builder.load_file(str(ROOT / "main.kv"))
 
 
 def readable_name(path: Path) -> str:
