@@ -3,12 +3,30 @@
 from pathlib import Path
 
 from kivy.core.window import Window
+from kivy.lang import Builder
 from kivy.metrics import dp
 from kivy.properties import BooleanProperty, StringProperty
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.button import Button
 from kivy.uix.image import Image
 from kivy.uix.scatter import Scatter
 
-from ui import BrassButton, CardActionButton, CardControls, CardFrame
+
+
+class CardFrame(BoxLayout):
+    """Card border and inner layout; appearance lives in card.kv."""
+
+
+class CardControls(BoxLayout):
+    """Action row below a card."""
+
+
+class CardActionButton(Button):
+    """Secondary action button on a card."""
+
+
+class CardPrimaryButton(Button):
+    """Brass action button on a card."""
 
 
 class CardOnTable(Scatter):
@@ -46,7 +64,7 @@ class CardOnTable(Scatter):
         panel.add_widget(self.picture)
 
         controls = CardControls()
-        turn_button = BrassButton(text="↻  Face", font_size=dp(10), padding=(dp(1), 0))
+        turn_button = CardPrimaryButton(text="↻  Face")
         turn_button.bind(on_release=lambda *_: self.turn_card())
         discard_button = CardActionButton(text="Jeter")
         discard_button.bind(on_release=lambda *_: self.discard())
@@ -85,3 +103,7 @@ class CardOnTable(Scatter):
 
     def discard(self):
         self.on_discard_callback(self)
+
+
+# Load the appearance rules after defining the widget classes used by card.kv.
+Builder.load_file(str(Path(__file__).resolve().parent / "card.kv"))
