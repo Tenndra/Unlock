@@ -102,7 +102,6 @@ class UnlockTableApp(App):
     def build_toolbar(self):
         bar = ToolbarPanel()
         title = ToolbarTitle(text="[b]UNLOCK[/b]  [color=#C79C50]•[/color]  TABLE VIRTUELLE")
-        title.bind(size=lambda w, *_: setattr(w, "text_size", w.size))
         bar.add_widget(title)
         decks = self.available_decks()
         self.deck_spinner = Spinner(text=decks[0] if decks else "Aucun paquet", values=decks)
