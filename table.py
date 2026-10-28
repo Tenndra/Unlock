@@ -1,5 +1,8 @@
 """Play surface and management of cards currently on the table."""
 
+from pathlib import Path
+
+from kivy.lang import Builder
 from kivy.metrics import dp
 from kivy.uix.floatlayout import FloatLayout
 
@@ -62,3 +65,7 @@ class TableSurface(FloatLayout):
         self.cards[card_id] = card
         card.center = self.center
         self.add_widget(card)
+
+
+# Load the appearance rules after defining TableSurface.
+Builder.load_file(str(Path(__file__).resolve().parent / "table.kv"))
