@@ -53,8 +53,7 @@ class CardOnTable(Scatter):
 
         # Scatter does not lay out its child automatically: keep the panel
         # synchronized with the Scatter size or the visible card stays small.
-        panel = CardFrame(orientation="vertical", spacing=dp(3), padding=dp(3),
-                          size_hint=(None, None), size=self.size)
+        panel = CardFrame(size_hint=(None, None), size=self.size)
         self.bind(size=lambda widget, value: setattr(panel, "size", value))
         self.picture = Image(
             source=str(self.recto),
