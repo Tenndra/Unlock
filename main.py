@@ -27,6 +27,10 @@ class AppRoot(BoxLayout):
     """Root widget; its appearance is defined in main.kv."""
 
 
+class BodyPanel(BoxLayout):
+    """Horizontal row containing the deck list and play surface."""
+
+
 class ToolbarPanel(BoxLayout):
     """Top toolbar."""
 
@@ -73,15 +77,13 @@ class UnlockTableApp(App):
         self.deck_path = None
         self.card_ids = []
         self.card_buttons = {}
-        root = AppRoot(orientation="vertical", spacing=dp(2), padding=dp(5))
+        root = AppRoot()
         root.add_widget(self.build_toolbar())
 
-        body = BoxLayout(spacing=dp(5))
+        body = BodyPanel()
         # A narrower sidebar leaves more room for the play area.
-        sidebar = SidebarPanel(orientation="vertical", size_hint_x=None, width=dp(112),
-                                padding=dp(7), spacing=dp(5))
-        sidebar.add_widget(SectionTitle(text="[b]CARTES DU PAQUET[/b]",
-                                        size_hint_y=None, height=dp(28)))
+        sidebar = SidebarPanel()
+        sidebar.add_widget(SectionTitle(text="[b]CARTES DU PAQUET[/b]"))
         self.card_scroll = ScrollView(do_scroll_x=False, do_scroll_y=True, bar_width=dp(3))
         self.card_list_box = BoxLayout(orientation="vertical", size_hint_y=None,
                                         spacing=dp(1), padding=(0, dp(1)))
@@ -98,22 +100,19 @@ class UnlockTableApp(App):
         return root
 
     def build_toolbar(self):
-        bar = ToolbarPanel(size_hint_y=None, height=dp(58), padding=(dp(12), dp(7)),
-                            spacing=dp(9))
-        title = ToolbarTitle(text="[b]UNLOCK[/b]  [color=#C79C50]•[/color]  TABLE VIRTUELLE",
-                             size_hint_x=None, width=dp(280))
+        bar = ToolbarPanel()
+        title = ToolbarTitle(text="[b]UNLOCK[/b]  [color=#C79C50]•[/color]  TABLE VIRTUELLE")
         title.bind(size=lambda w, *_: setattr(w, "text_size", w.size))
         bar.add_widget(title)
         decks = self.available_decks()
-        self.deck_spinner = Spinner(text=decks[0] if decks else "Aucun paquet",
-                                    values=decks, size_hint_x=None, width=dp(280))
+        self.deck_spinner = Spinner(text=decks[0] if decks else "Aucun paquet", values=decks)
         self.deck_spinner.bind(text=lambda _spinner, value: self.load_deck(value))
         bar.add_widget(self.deck_spinner)
         bar.add_widget(Widget())
-        help_button = HelpButton(text="?  Aide", size_hint_x=None, width=dp(90))
+        help_button = HelpButton(text="?  Aide")
         help_button.bind(on_release=lambda *_: self.show_help())
         bar.add_widget(help_button)
-        discard_button = BrassButton(text="♧  Défausse", size_hint_x=None, width=dp(120))
+        discard_button = BrassButton(text="♧  Défausse")
         discard_button.bind(on_release=lambda *_: self.show_discard())
         bar.add_widget(discard_button)
         return bar
@@ -192,13 +191,13 @@ class UnlockTableApp(App):
             for card_id in list(self.table.discarded):
                 row = BoxLayout(size_hint_y=None, height=dp(42), spacing=dp(6))
                 row.add_widget(Label(text=card_id))
-                restore = DarkButton(text="Remettre en jeu", size_hint_x=None, width=dp(150))
+                restore = DarkButton(text="Remettre en jeu")
                 restore.bind(on_release=lambda _btn, value=card_id: self.restore_from_discard(value))
                 row.add_widget(restore)
                 entries.add_widget(row)
             scroll.add_widget(entries)
             content.add_widget(scroll)
-        close = DarkButton(text="Fermer", size_hint_y=None, height=dp(42))
+        close = DarkButton(text="Fermer")
         content.add_widget(close)
         popup = Popup(title="Défausse", content=content, size_hint=(0.45, 0.65))
         close.bind(on_release=popup.dismiss)
