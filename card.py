@@ -42,8 +42,10 @@ class CardOnTable(Scatter):
         self.on_discard_callback = on_discard
         self.recto = self.deck_path / f"{card_id}_r.jpg"
         self.verso = self.deck_path / f"{card_id}_v.jpg"
-        # Larger default card size; keep the original card aspect ratio.
-        self.size = (dp(360), dp(553))
+        # The picture keeps the original 280:430 ratio. The action row sits
+        # underneath it and is not counted as part of the printed card.
+        self.controls_height = dp(28)
+        self.size = (dp(360), dp(360) * 430 / 280 + self.controls_height)
         self.size_hint = (None, None)
         self.do_translation = True
         self.do_rotation = True
@@ -59,7 +61,9 @@ class CardOnTable(Scatter):
             source=str(self.recto),
             fit_mode="contain",
             allow_stretch=True,
+            size_hint_y=None,
         )
+        self.picture.bind(width=self._sync_picture_height)
         panel.add_widget(self.picture)
 
         controls = CardControls()
@@ -71,6 +75,10 @@ class CardOnTable(Scatter):
         controls.add_widget(discard_button)
         panel.add_widget(controls)
         self.add_widget(panel)
+
+    def _sync_picture_height(self, picture, width):
+        """Keep the printed image at its original 280:430 aspect ratio."""
+        picture.height = width * 430 / 280
 
     def on_touch_down(self, touch):
         # Mouse wheel acts only on the card under the pointer.
