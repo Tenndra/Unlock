@@ -25,13 +25,11 @@
     canvas.before:
         Color:
             rgba: 0.055, 0.075, 0.09, 0.94
-        RoundedRectangle:
+        Rectangle:
             pos: self.pos
             size: self.size
-            radius: [dp(7)]
         Color:
             rgba: 0.78, 0.61, 0.31, 0.9
         Line:
-            rounded_rectangle: (self.x, self.y, self.width, self.height, dp(7))
+            rectangle: self.x, self.y, self.width, self.height
             width: 1.1
-
