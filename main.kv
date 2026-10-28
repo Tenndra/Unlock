@@ -1,0 +1,82 @@
+#:import dp kivy.metrics.dp
+
+<AppRoot>:
+    canvas.before:
+        Color:
+            rgba: 0.055, 0.075, 0.09, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<ToolbarPanel>:
+    canvas.before:
+        Color:
+            rgba: 0.09, 0.12, 0.14, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<SidebarPanel>:
+    canvas.before:
+        Color:
+            rgba: 0.09, 0.12, 0.14, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<ToolbarTitle>:
+    color: 0.94, 0.92, 0.85, 1
+    bold: True
+    font_size: dp(16)
+    halign: 'left'
+    valign: 'middle'
+    markup: True
+
+<SectionTitle>:
+    color: 0.78, 0.61, 0.31, 1
+    bold: True
+    font_size: dp(11)
+    markup: True
+
+<BrassButton>:
+    background_normal: ''
+    background_down: ''
+    background_color: 0.78, 0.61, 0.31, 1
+    color: 0.055, 0.075, 0.09, 1
+    bold: True
+    font_size: dp(12)
+
+<DarkButton>:
+    background_normal: ''
+    background_down: ''
+    background_color: 0.14, 0.18, 0.20, 1
+    color: 0.94, 0.92, 0.85, 1
+    font_size: dp(12)
+
+<HelpButton>:
+    background_normal: ''
+    background_down: ''
+    background_color: 0.14, 0.18, 0.20, 1
+    color: 0.94, 0.92, 0.85, 1
+    font_size: dp(12)
+
+<DeckCardButton>:
+    background_normal: ''
+    background_down: ''
+    background_color: 0.14, 0.18, 0.20, 1
+    color: 0.94, 0.92, 0.85, 1
+    halign: 'center'
+    valign: 'middle'
+    padding: 0, 0
+
+<Spinner>:
+    background_normal: ''
+    background_color: 0.14, 0.18, 0.20, 1
+    color: 0.94, 0.92, 0.85, 1
+    font_size: dp(13)
+
+<Popup>:
+    title_color: 0.94, 0.92, 0.85, 1
+    title_size: dp(15)
+    separator_color: 0.78, 0.61, 0.31, 1
+    background_color: 0.09, 0.12, 0.14, 1
