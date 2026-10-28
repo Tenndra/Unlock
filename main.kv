@@ -1,6 +1,9 @@
 #:import dp kivy.metrics.dp
 
 <AppRoot>:
+    orientation: "vertical"
+    spacing: dp(2)
+    padding: dp(5)
     canvas.before:
         Color:
             rgba: 0.055, 0.075, 0.09, 1
@@ -8,7 +11,14 @@
             pos: self.pos
             size: self.size
 
+<BodyPanel>:
+    spacing: dp(5)
+
 <ToolbarPanel>:
+    size_hint_y: None
+    height: dp(58)
+    padding: dp(12), dp(7)
+    spacing: dp(9)
     canvas.before:
         Color:
             rgba: 0.09, 0.12, 0.14, 1
@@ -17,6 +27,11 @@
             size: self.size
 
 <SidebarPanel>:
+    orientation: "vertical"
+    size_hint_x: None
+    width: dp(112)
+    padding: dp(7)
+    spacing: dp(5)
     canvas.before:
         Color:
             rgba: 0.09, 0.12, 0.14, 1
@@ -25,6 +40,9 @@
             size: self.size
 
 <ToolbarTitle>:
+    size_hint_x: None
+    width: dp(280)
+    text_size: self.size
     color: 0.94, 0.92, 0.85, 1
     bold: True
     font_size: dp(16)
@@ -33,6 +51,8 @@
     markup: True
 
 <SectionTitle>:
+    size_hint_y: None
+    height: dp(28)
     color: 0.78, 0.61, 0.31, 1
     bold: True
     font_size: dp(11)
@@ -47,6 +67,11 @@
     font_size: dp(12)
 
 <DarkButton>:
+    font_size: dp(12)
+
+<DarkButton>:
+    size_hint_y: None
+    height: dp(42)
     background_normal: ''
     background_down: ''
     background_color: 0.14, 0.18, 0.20, 1
@@ -54,11 +79,21 @@
     font_size: dp(12)
 
 <HelpButton>:
+    size_hint_x: None
+    width: dp(90)
     background_normal: ''
     background_down: ''
     background_color: 0.14, 0.18, 0.20, 1
     color: 0.94, 0.92, 0.85, 1
     font_size: dp(12)
+
+<BrassButton>:
+    size_hint_x: None
+    width: dp(120)
+
+<HelpButton>:
+    size_hint_x: None
+    width: dp(90)
 
 <DeckCardButton>:
     background_normal: ''
@@ -70,10 +105,16 @@
     padding: 0, 0
 
 <Spinner>:
+    size_hint_x: None
+    width: dp(280)
     background_normal: ''
     background_color: 0.14, 0.18, 0.20, 1
     color: 0.94, 0.92, 0.85, 1
     font_size: dp(13)
+
+<DarkButton>:
+    size_hint_y: None
+    height: dp(42)
 
 <Popup>:
     title_color: 0.94, 0.92, 0.85, 1
