@@ -6,31 +6,12 @@ from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.metrics import dp
 from kivy.properties import BooleanProperty, StringProperty
-from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.button import Button
 from kivy.uix.image import Image
 from kivy.uix.scatter import Scatter
 
 
-
-class CardFrame(BoxLayout):
-    """Card border and inner layout; appearance lives in card.kv."""
-
-
-class CardControls(BoxLayout):
-    """Action row below a card."""
-
-
-class CardActionButton(Button):
-    """Secondary action button on a card."""
-
-
-class CardPrimaryButton(Button):
-    """Brass action button on a card."""
-
-
 class CardOnTable(Scatter):
-    """A single physical-style card: only this widget moves and rotates."""
+    """A single physical-style card: move, rotate, resize, flip and discard."""
 
     card_id = StringProperty("")
     face_up = BooleanProperty(True)
@@ -42,51 +23,40 @@ class CardOnTable(Scatter):
         self.on_discard_callback = on_discard
         self.recto = self.deck_path / f"{card_id}_r.jpg"
         self.verso = self.deck_path / f"{card_id}_v.jpg"
-        # The picture keeps the original 280:430 ratio. The action row sits
-        # underneath it and is not counted as part of the printed card.
-        self.controls_height = dp(28)
-        self.size = (dp(360), dp(360) * 430 / 280 + self.controls_height)
         self.size_hint = (None, None)
+        self.size = (dp(280), dp(430))
         self.do_translation = True
         self.do_rotation = True
         self.do_scale = False
         self.auto_bring_to_front = True
         self.rotation = 0
 
-        # Scatter does not lay out its child automatically: keep the panel
-        # synchronized with the Scatter size or the visible card stays small.
-        panel = CardFrame(size_hint=(None, None), size=self.size)
-        self.bind(size=lambda widget, value: setattr(panel, "size", value))
         self.picture = Image(
             source=str(self.recto),
-            fit_mode="contain",
-            allow_stretch=True,
-            size_hint_y=None,
+            fit_mode="fill",
+            size_hint=(None, None),
+            size=self.size,
+            pos=(0, 0),
         )
-        self.picture.bind(width=self._sync_picture_height)
-        panel.add_widget(self.picture)
+        self.bind(size=self._sync_picture_size)
+        self.add_widget(self.picture)
 
-        controls = CardControls()
-        turn_button = CardPrimaryButton(text="↻  Face")
-        turn_button.bind(on_release=lambda *_: self.turn_card())
-        discard_button = CardActionButton(text="Jeter")
-        discard_button.bind(on_release=lambda *_: self.discard())
-        controls.add_widget(turn_button)
-        controls.add_widget(discard_button)
-        panel.add_widget(controls)
-        self.add_widget(panel)
-
-    def _sync_picture_height(self, picture, width):
-        """Keep the printed image at its original 280:430 aspect ratio."""
-        picture.height = width * 430 / 280
+    def _sync_picture_size(self, *_):
+        """Keep the image exactly the size of the card's physical frame."""
+        self.picture.size = self.size
+        self.picture.pos = (0, 0)
 
     def on_touch_down(self, touch):
+        # A double-click flips the card without adding permanent controls.
+        if self.collide_point(*touch.pos) and getattr(touch, "is_double_tap", False):
+            self.turn_card()
+            return True
+
         # Mouse wheel acts only on the card under the pointer.
         # Ctrl + wheel rotates; wheel alone changes this card's visual scale.
         if getattr(touch, "button", None) in ("scrollup", "scrolldown"):
             if self.collide_point(*touch.pos):
                 direction = 1 if touch.button == "scrollup" else -1
-                # On many Kivy desktop providers, modifier keys are exposed by Window.
                 modifiers = (getattr(touch, "modifiers", None)
                              or getattr(Window, "modifiers", [])
                              or [])
@@ -97,6 +67,16 @@ class CardOnTable(Scatter):
                     self.scale = max(0.45, min(2.5, self.scale * factor))
                 return True
         return super().on_touch_down(touch)
+
+    def on_touch_up(self, touch):
+        # The discard pile is a drop target; the card is discarded only when
+        # released inside that zone, not merely near it.
+        table = self.parent
+        pile = getattr(table, "discard_pile", None)
+        if pile is not None and pile.collide_point(*touch.pos):
+            self.discard()
+            return True
+        return super().on_touch_up(touch)
 
     def turn_card(self):
         self.face_up = not self.face_up
