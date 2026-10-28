@@ -20,12 +20,14 @@ class TableSurface(FloatLayout):
         self.discarded = {}
 
     def _sync_table_layout(self, *_):
-        # Make cards as large as practical on the table while leaving a
-        # little room around them; preserve the original 280:430 proportions.
-        card_w = min(self.width * 0.90, self.height * 0.88 * 280 / 430)
+        # Fit the printed image to the table while preserving its 280:430
+        # ratio. The 28 dp action row is outside the printed card area.
+        controls_h = dp(28)
+        available_h = max(0, self.height * 0.88 - controls_h)
+        card_w = min(self.width * 0.90, available_h * 280 / 430)
         card_h = card_w * 430 / 280
         for card in self.cards.values():
-            card.size = (card_w, card_h)
+            card.size = (card_w, card_h + controls_h)
 
     def add_card(self, card_id, deck_path):
         if card_id in self.discarded:
@@ -39,9 +41,11 @@ class TableSurface(FloatLayout):
             return
         card = CardOnTable(card_id, deck_path, self.discard_card)
         # Use the same maximum-fit sizing as existing cards on the table.
-        card_w = min(self.width * 0.90, self.height * 0.88 * 280 / 430)
+        controls_h = dp(28)
+        available_h = max(0, self.height * 0.88 - controls_h)
+        card_w = min(self.width * 0.90, available_h * 280 / 430)
         card_h = card_w * 430 / 280
-        card.size = (card_w, card_h)
+        card.size = (card_w, card_h + controls_h)
         card.center = (self.width / 2 + (len(self.cards) % 5) * dp(22),
                        self.height / 2 + (len(self.cards) % 4) * dp(18))
         self.cards[card_id] = card
