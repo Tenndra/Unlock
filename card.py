@@ -5,51 +5,14 @@ from pathlib import Path
 from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.metrics import dp
+from kivy.clock import Clock
 from kivy.properties import BooleanProperty, StringProperty
 from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
-from kivy.uix.widget import Widget
-from kivy.graphics import Color, Line
 from kivy.uix.image import Image
 from kivy.uix.popup import Popup
 from kivy.uix.scatter import Scatter
-
-
-class MenuIcon(Widget):
-    """Small vector icon drawn directly with Kivy canvas instructions."""
-
-    def __init__(self, kind, **kwargs):
-        super().__init__(**kwargs)
-        self.kind = kind
-        self.size_hint = (None, None)
-        self.size = (dp(22), dp(22))
-        self.bind(pos=self._draw_icon, size=self._draw_icon)
-        self._draw_icon()
-
-    def _draw_icon(self, *_):
-        self.canvas.clear()
-        x, y = self.pos
-        w, h = self.size
-        with self.canvas:
-            if self.kind == "trash":
-                Color(1.0, 0.55, 0.16, 1)  # Orange: discard
-            else:
-                Color(0.35, 0.82, 0.48, 1)  # Green: return to deck
-            if self.kind == "trash":
-                # Lid, handles and the body of a small wastebasket.
-                Line(points=[x + w * .22, y + h * .78, x + w * .78, y + h * .78], width=1.4)
-                Line(points=[x + w * .40, y + h * .88, x + w * .60, y + h * .88], width=1.4)
-                Line(points=[x + w * .30, y + h * .70, x + w * .36, y + h * .18,
-                             x + w * .64, y + h * .18, x + w * .70, y + h * .70], width=1.4)
-                Line(points=[x + w * .45, y + h * .60, x + w * .46, y + h * .30], width=1.1)
-                Line(points=[x + w * .55, y + h * .60, x + w * .54, y + h * .30], width=1.1)
-            else:
-                # Return arrow pointing back toward the deck.
-                Line(points=[x + w * .78, y + h * .68, x + w * .58, y + h * .84,
-                             x + w * .40, y + h * .68], width=1.6)
-                Line(points=[x + w * .58, y + h * .82, x + w * .58, y + h * .47,
-                             x + w * .42, y + h * .30, x + w * .20, y + h * .30], width=1.6)
 
 
 class CardOnTable(Scatter):
@@ -121,37 +84,17 @@ class CardOnTable(Scatter):
         if self._context_popup is not None:
             self._context_popup.dismiss()
 
-        from kivy.uix.boxlayout import BoxLayout
         menu_content = BoxLayout(orientation="vertical", spacing=dp(4), padding=dp(4))
         discard_button = Button(
+            text="Défausser",
             size_hint=(1, None), height=dp(38),
             background_normal="", background_color=(0.16, 0.19, 0.18, 1),
         )
-        discard_row = BoxLayout(orientation="horizontal", spacing=dp(9), padding=(dp(10), 0),
-                                size_hint=(None, None))
-        discard_row.add_widget(MenuIcon("trash"))
-        discard_label = Label(text="Défausser", color=(1, 1, 1, 1),
-                              halign="left", valign="middle")
-        discard_label.bind(size=lambda widget, size: setattr(widget, "text_size", size))
-        discard_row.add_widget(discard_label)
-        discard_button.add_widget(discard_row)
-        discard_button.bind(pos=lambda button, pos: setattr(discard_row, "pos", pos),
-                            size=lambda button, size: setattr(discard_row, "size", size))
-
         return_button = Button(
+            text="Remettre dans la pioche",
             size_hint=(1, None), height=dp(38),
             background_normal="", background_color=(0.16, 0.19, 0.18, 1),
         )
-        return_row = BoxLayout(orientation="horizontal", spacing=dp(9), padding=(dp(10), 0),
-                               size_hint=(None, None))
-        return_row.add_widget(MenuIcon("return"))
-        return_label = Label(text="Remettre dans la pioche", color=(1, 1, 1, 1),
-                             halign="left", valign="middle")
-        return_label.bind(size=lambda widget, size: setattr(widget, "text_size", size))
-        return_row.add_widget(return_label)
-        return_button.add_widget(return_row)
-        return_button.bind(pos=lambda button, pos: setattr(return_row, "pos", pos),
-                           size=lambda button, size: setattr(return_row, "size", size))
         menu_content.add_widget(discard_button)
         menu_content.add_widget(return_button)
         popup = Popup(
@@ -164,15 +107,16 @@ class CardOnTable(Scatter):
             background_color=(0.12, 0.14, 0.13, 0.98),
             pos_hint={},
         )
-        # Popup.open() recenters the popup by default. Open it first, then
-        # apply the pointer position so the menu stays beside the right-click.
+        # Use the window's mouse coordinates, then position after Popup's
+        # opening animation/alignment has completed.
+        pointer_pos = Window.mouse_pos
         x = min(max(0, pointer_pos[0]), max(0, Window.width - dp(198)))
         y = min(max(0, pointer_pos[1] - dp(96)), max(0, Window.height - dp(96)))
         discard_button.bind(on_release=lambda *_: self._discard_from_menu(popup))
         return_button.bind(on_release=lambda *_: self._return_to_deck_from_menu(popup))
         self._context_popup = popup
         popup.open()
-        popup.pos = (x, y)
+        Clock.schedule_once(lambda *_: setattr(popup, "pos", (x, y)), 0)
 
     def _discard_from_menu(self, popup):
         popup.dismiss()
