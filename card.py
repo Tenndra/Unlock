@@ -18,11 +18,12 @@ class CardOnTable(Scatter):
     card_id = StringProperty("")
     face_up = BooleanProperty(True)
 
-    def __init__(self, card_id, deck_path, on_discard, **kwargs):
+    def __init__(self, card_id, deck_path, on_discard, on_return_to_deck=None, **kwargs):
         super().__init__(**kwargs)
         self.card_id = card_id
         self.deck_path = Path(deck_path)
         self.on_discard_callback = on_discard
+        self.on_return_to_deck_callback = on_return_to_deck
         self.recto = self.deck_path / f"{card_id}_r.jpg"
         self.verso = self.deck_path / f"{card_id}_v.jpg"
         self.size_hint = (None, None)
@@ -80,18 +81,24 @@ class CardOnTable(Scatter):
         if self._context_popup is not None:
             self._context_popup.dismiss()
 
-        menu_button = Button(
-            text="Défausser",
-            size_hint=(None, None),
-            size=(dp(150), dp(42)),
-            background_normal="",
-            background_color=(0.16, 0.19, 0.18, 1),
+        from kivy.uix.boxlayout import BoxLayout
+        menu_content = BoxLayout(orientation="vertical", spacing=dp(4), padding=dp(4))
+        discard_button = Button(
+            text="Défausser", size_hint=(1, None), height=dp(38),
+            background_normal="", background_color=(0.16, 0.19, 0.18, 1),
             color=(1, 1, 1, 1),
         )
+        return_button = Button(
+            text="Remettre dans la pioche", size_hint=(1, None), height=dp(38),
+            background_normal="", background_color=(0.16, 0.19, 0.18, 1),
+            color=(1, 1, 1, 1),
+        )
+        menu_content.add_widget(discard_button)
+        menu_content.add_widget(return_button)
         popup = Popup(
-            content=menu_button,
+            content=menu_content,
             size_hint=(None, None),
-            size=(dp(158), dp(50)),
+            size=(dp(198), dp(96)),
             auto_dismiss=True,
             separator_height=0,
             background="",
@@ -99,9 +106,10 @@ class CardOnTable(Scatter):
         )
         # Keep the menu fully inside the application window.
         x = min(max(0, pointer_pos[0]), max(0, Window.width - dp(158)))
-        y = min(max(0, pointer_pos[1] - dp(50)), max(0, Window.height - dp(50)))
+        y = min(max(0, pointer_pos[1] - dp(96)), max(0, Window.height - dp(96)))
         popup.pos = (x, y)
-        menu_button.bind(on_release=lambda *_: self._discard_from_menu(popup))
+        discard_button.bind(on_release=lambda *_: self._discard_from_menu(popup))
+        return_button.bind(on_release=lambda *_: self._return_to_deck_from_menu(popup))
         self._context_popup = popup
         popup.open()
 
@@ -109,6 +117,12 @@ class CardOnTable(Scatter):
         popup.dismiss()
         self._context_popup = None
         self.discard()
+
+    def _return_to_deck_from_menu(self, popup):
+        popup.dismiss()
+        self._context_popup = None
+        if callable(self.on_return_to_deck_callback):
+            self.on_return_to_deck_callback(self)
 
     def turn_card(self):
         self.face_up = not self.face_up
