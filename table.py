@@ -75,6 +75,7 @@ class TableSurface(FloatLayout):
         self.cards = {}
         self.discarded = {}
         self.on_card_discarded = None
+        self.on_card_returned_to_deck = None
         self.discard_pile = DiscardPile(self._open_discard)
         self.add_widget(self.discard_pile)
         self._sync_table_layout()
@@ -109,7 +110,8 @@ class TableSurface(FloatLayout):
             self.bring_to_front(self.discard_pile)
             return
 
-        card = CardOnTable(card_id, deck_path, self.discard_card)
+        card = CardOnTable(card_id, deck_path, self.discard_card,
+                           self.return_card_to_deck)
         available_h = max(0, self.height * 0.88)
         card_w = min(self.width * 0.90, available_h * 280 / 430)
         card_h = card_w * 430 / 280
@@ -136,6 +138,14 @@ class TableSurface(FloatLayout):
         self.bring_to_front(self.discard_pile)
         if callable(self.on_card_discarded):
             self.on_card_discarded(card.card_id)
+
+    def return_card_to_deck(self, card):
+        """Remove a mistakenly drawn card and make it available again."""
+        self.cards.pop(card.card_id, None)
+        if card.parent is self:
+            self.remove_widget(card)
+        if callable(self.on_card_returned_to_deck):
+            self.on_card_returned_to_deck(card.card_id)
 
     def restore_card(self, card_id):
         card = self.discarded.pop(card_id, None)
