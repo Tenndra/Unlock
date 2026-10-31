@@ -5,14 +5,29 @@ from pathlib import Path
 from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.metrics import dp
-from kivy.clock import Clock
 from kivy.properties import BooleanProperty, StringProperty
 from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.label import Label
 from kivy.uix.image import Image
-from kivy.uix.popup import Popup
+from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.scatter import Scatter
+
+
+class ContextMenuLayer(FloatLayout):
+    """Window-level menu positioned in absolute window coordinates."""
+
+    def __init__(self, menu, **kwargs):
+        super().__init__(**kwargs)
+        self.size = Window.size
+        self.size_hint = (None, None)
+        self.menu = menu
+        self.add_widget(menu)
+
+    def on_touch_down(self, touch):
+        if not self.menu.collide_point(*touch.pos):
+            Window.remove_widget(self)
+            return False
+        return super().on_touch_down(touch)
 
 
 class CardOnTable(Scatter):
@@ -80,52 +95,59 @@ class CardOnTable(Scatter):
         return super().on_touch_down(touch)
 
     def show_context_menu(self, pointer_pos):
-        """Display card actions at the mouse pointer."""
+        """Show a lightweight menu directly on the application window."""
         if self._context_popup is not None:
-            self._context_popup.dismiss()
+            Window.remove_widget(self._context_popup)
+            self._context_popup = None
 
-        menu_content = BoxLayout(orientation="vertical", spacing=dp(4), padding=dp(4))
+        menu = BoxLayout(
+            orientation="vertical",
+            spacing=dp(4),
+            padding=dp(4),
+            size_hint=(None, None),
+            size=(dp(210), dp(92)),
+        )
         discard_button = Button(
             text="Défausser",
-            size_hint=(1, None), height=dp(38),
+            size_hint=(1, None), height=dp(40),
             background_normal="", background_color=(0.16, 0.19, 0.18, 1),
         )
         return_button = Button(
             text="Remettre dans la pioche",
-            size_hint=(1, None), height=dp(38),
+            size_hint=(1, None), height=dp(40),
             background_normal="", background_color=(0.16, 0.19, 0.18, 1),
         )
-        menu_content.add_widget(discard_button)
-        menu_content.add_widget(return_button)
-        popup = Popup(
-            content=menu_content,
-            size_hint=(None, None),
-            size=(dp(198), dp(96)),
-            auto_dismiss=True,
-            separator_height=0,
-            background="",
-            background_color=(0.12, 0.14, 0.13, 0.98),
-            pos_hint={},
-        )
-        # Use the window's mouse coordinates, then position after Popup's
-        # opening animation/alignment has completed.
-        pointer_pos = Window.mouse_pos
-        x = min(max(0, pointer_pos[0]), max(0, Window.width - dp(198)))
-        y = min(max(0, pointer_pos[1] - dp(96)), max(0, Window.height - dp(96)))
-        discard_button.bind(on_release=lambda *_: self._discard_from_menu(popup))
-        return_button.bind(on_release=lambda *_: self._return_to_deck_from_menu(popup))
-        self._context_popup = popup
-        popup.open()
-        Clock.schedule_once(lambda *_: setattr(popup, "pos", (x, y)), 0)
+        menu.add_widget(discard_button)
+        menu.add_widget(return_button)
 
-    def _discard_from_menu(self, popup):
-        popup.dismiss()
-        self._context_popup = None
+        # This is a normal widget attached to Window, not a Popup: Kivy
+        # therefore cannot recenter it. touch.pos is already in window space.
+        x = min(max(0, pointer_pos[0]), max(0, Window.width - menu.width))
+        y = pointer_pos[1] - menu.height
+        if y < 0:
+            y = min(pointer_pos[1], Window.height - menu.height)
+        y = min(max(0, y), max(0, Window.height - menu.height))
+
+        layer = ContextMenuLayer(menu)
+        menu.pos = (x, y)
+        Window.add_widget(layer)
+        self._context_popup = layer
+
+        discard_button.bind(on_release=lambda *_: self._discard_from_menu(layer))
+        return_button.bind(on_release=lambda *_: self._return_to_deck_from_menu(layer))
+
+    def _close_context_menu(self, layer):
+        if layer is not None and layer.parent is Window:
+            Window.remove_widget(layer)
+        if self._context_popup is layer:
+            self._context_popup = None
+
+    def _discard_from_menu(self, layer):
+        self._close_context_menu(layer)
         self.discard()
 
-    def _return_to_deck_from_menu(self, popup):
-        popup.dismiss()
-        self._context_popup = None
+    def _return_to_deck_from_menu(self, layer):
+        self._close_context_menu(layer)
         if callable(self.on_return_to_deck_callback):
             self.on_return_to_deck_callback(self)
 
