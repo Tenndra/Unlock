@@ -195,8 +195,8 @@ class UnlockTableApp(App):
                 row.add_widget(Label(text=card_id))
                 restore = DarkButton(text="Remettre en jeu")
                 restore.bind(on_release=lambda _btn, value=card_id: self.restore_from_discard(value))
-                entries.add_widget(row)
                 row.add_widget(restore)
+                entries.add_widget(row)
             scroll.add_widget(entries)
             content.add_widget(scroll)
         close = DarkButton(text="Fermer")
@@ -214,12 +214,12 @@ class UnlockTableApp(App):
         self.show_discard()
 
     def show_help(self):
-        text = ("• Clique sur une carte à gauche pour la poser sur la table.\n"
-                "• Fais glisser une carte pour la déplacer ou la déposer dans la zone Défausse.\n"
-                "• Double-clic sur une carte : la retourner.\n"
-                "• Molette au-dessus d’une carte : agrandir ou réduire cette carte.\n"
-                "• Ctrl + molette au-dessus d’une carte : la faire pivoter.\n"
-                "• Clique sur la pile Défausse pour consulter ou restaurer une carte.\n"
+        text = ("• Clique sur une carte à gauche pour la poser sur la table.\\n"
+                "• Clic droit sur une carte : ouvrir le menu, puis choisir « Défausser ».\\n"
+                "• Double-clic sur une carte : la retourner.\\n"
+                "• Molette au-dessus d’une carte : agrandir ou réduire cette carte.\\n"
+                "• Ctrl + molette au-dessus d’une carte : la faire pivoter.\\n"
+                "• Clique sur la pile Défausse pour consulter ou restaurer une carte.\\n"
                 "• Une carte déjà sur la table ne peut pas être ajoutée une seconde fois.")
         Popup(title="Aide", content=Label(text=text), size_hint=(0.6, 0.5)).open()
 
