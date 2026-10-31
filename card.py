@@ -6,7 +6,9 @@ from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.metrics import dp
 from kivy.properties import BooleanProperty, StringProperty
+from kivy.uix.button import Button
 from kivy.uix.image import Image
+from kivy.uix.popup import Popup
 from kivy.uix.scatter import Scatter
 
 
@@ -30,6 +32,7 @@ class CardOnTable(Scatter):
         self.do_scale = False
         self.auto_bring_to_front = True
         self.rotation = 0
+        self._context_popup = None
 
         self.picture = Image(
             source=str(self.recto),
@@ -47,15 +50,19 @@ class CardOnTable(Scatter):
         self.picture.pos = (0, 0)
 
     def on_touch_down(self, touch):
-        # A double-click flips the card without adding permanent controls.
-        if self.collide_point(*touch.pos) and getattr(touch, "is_double_tap", False):
-            self.turn_card()
-            return True
+        if self.collide_point(*touch.pos):
+            # Right-click opens a small context menu next to the pointer.
+            if getattr(touch, "button", None) == "right":
+                self.show_context_menu(touch.pos)
+                return True
 
-        # Mouse wheel acts only on the card under the pointer.
-        # Ctrl + wheel rotates; wheel alone changes this card's visual scale.
-        if getattr(touch, "button", None) in ("scrollup", "scrolldown"):
-            if self.collide_point(*touch.pos):
+            # A double-click flips the card without adding permanent controls.
+            if getattr(touch, "is_double_tap", False):
+                self.turn_card()
+                return True
+
+            # Mouse wheel acts only on the card under the pointer.
+            if getattr(touch, "button", None) in ("scrollup", "scrolldown"):
                 direction = 1 if touch.button == "scrollup" else -1
                 modifiers = (getattr(touch, "modifiers", None)
                              or getattr(Window, "modifiers", [])
@@ -68,15 +75,40 @@ class CardOnTable(Scatter):
                 return True
         return super().on_touch_down(touch)
 
-    def on_touch_up(self, touch):
-        # The discard pile is a drop target; the card is discarded only when
-        # released inside that zone, not merely near it.
-        table = self.parent
-        pile = getattr(table, "discard_pile", None)
-        if pile is not None and pile.collide_point(*touch.pos):
-            self.discard()
-            return True
-        return super().on_touch_up(touch)
+    def show_context_menu(self, pointer_pos):
+        """Display card actions at the mouse pointer."""
+        if self._context_popup is not None:
+            self._context_popup.dismiss()
+
+        menu_button = Button(
+            text="Défausser",
+            size_hint=(None, None),
+            size=(dp(150), dp(42)),
+            background_normal="",
+            background_color=(0.16, 0.19, 0.18, 1),
+            color=(1, 1, 1, 1),
+        )
+        popup = Popup(
+            content=menu_button,
+            size_hint=(None, None),
+            size=(dp(158), dp(50)),
+            auto_dismiss=True,
+            separator_height=0,
+            background="",
+            background_color=(0.12, 0.14, 0.13, 0.98),
+        )
+        # Keep the menu fully inside the application window.
+        x = min(max(0, pointer_pos[0]), max(0, Window.width - dp(158)))
+        y = min(max(0, pointer_pos[1] - dp(50)), max(0, Window.height - dp(50)))
+        popup.pos = (x, y)
+        menu_button.bind(on_release=lambda *_: self._discard_from_menu(popup))
+        self._context_popup = popup
+        popup.open()
+
+    def _discard_from_menu(self, popup):
+        popup.dismiss()
+        self._context_popup = None
+        self.discard()
 
     def turn_card(self):
         self.face_up = not self.face_up
