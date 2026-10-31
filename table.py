@@ -14,7 +14,7 @@ from card import CardOnTable
 
 
 class DiscardPile(BoxLayout):
-    """Fixed drop target showing a thumbnail of the most recently discarded card."""
+    """Fixed pile preview; click it to inspect discarded cards."""
 
     count = NumericProperty(0)
     image_source = StringProperty("")
@@ -40,7 +40,7 @@ class DiscardPile(BoxLayout):
             size_hint=(1, 1),
         )
         self.hint = Label(
-            text="Glisser ici",
+            text="Clic pour consulter",
             size_hint_y=None,
             height=dp(16),
             font_size=dp(9),
@@ -57,7 +57,7 @@ class DiscardPile(BoxLayout):
         self.title.text = f"DÉFAUSSE · {self.count}"
         self.thumbnail.source = self.image_source
         self.thumbnail.reload()
-        self.hint.text = "Glisser ici" if self.count == 0 else "Déposer une carte"
+        self.hint.text = "Clic pour consulter"
 
     def on_touch_down(self, touch):
         if self.collide_point(*touch.pos):
@@ -95,8 +95,6 @@ class TableSurface(FloatLayout):
                 self.x + self.width - self.discard_pile.width - dp(20),
                 self.y + dp(18),
             )
-            # Keep the target visible above cards, while it remains a passive
-            # drop target during a drag that began on a card.
             self.bring_to_front(self.discard_pile)
 
     def add_card(self, card_id, deck_path):
