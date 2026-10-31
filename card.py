@@ -7,9 +7,46 @@ from kivy.lang import Builder
 from kivy.metrics import dp
 from kivy.properties import BooleanProperty, StringProperty
 from kivy.uix.button import Button
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.label import Label
+from kivy.uix.widget import Widget
+from kivy.graphics import Color, Line
 from kivy.uix.image import Image
 from kivy.uix.popup import Popup
 from kivy.uix.scatter import Scatter
+
+
+class MenuIcon(Widget):
+    """Small vector icon drawn directly with Kivy canvas instructions."""
+
+    def __init__(self, kind, **kwargs):
+        super().__init__(**kwargs)
+        self.kind = kind
+        self.size_hint = (None, None)
+        self.size = (dp(22), dp(22))
+        self.bind(pos=self._draw_icon, size=self._draw_icon)
+        self._draw_icon()
+
+    def _draw_icon(self, *_):
+        self.canvas.clear()
+        x, y = self.pos
+        w, h = self.size
+        with self.canvas:
+            Color(0.88, 0.84, 0.72, 1)
+            if self.kind == "trash":
+                # Lid, handles and the body of a small wastebasket.
+                Line(points=[x + w * .22, y + h * .78, x + w * .78, y + h * .78], width=1.4)
+                Line(points=[x + w * .40, y + h * .88, x + w * .60, y + h * .88], width=1.4)
+                Line(points=[x + w * .30, y + h * .70, x + w * .36, y + h * .18,
+                             x + w * .64, y + h * .18, x + w * .70, y + h * .70], width=1.4)
+                Line(points=[x + w * .45, y + h * .60, x + w * .46, y + h * .30], width=1.1)
+                Line(points=[x + w * .55, y + h * .60, x + w * .54, y + h * .30], width=1.1)
+            else:
+                # Return arrow pointing back toward the deck.
+                Line(points=[x + w * .78, y + h * .68, x + w * .58, y + h * .84,
+                             x + w * .40, y + h * .68], width=1.6)
+                Line(points=[x + w * .58, y + h * .82, x + w * .58, y + h * .47,
+                             x + w * .42, y + h * .30, x + w * .20, y + h * .30], width=1.6)
 
 
 class CardOnTable(Scatter):
@@ -84,15 +121,24 @@ class CardOnTable(Scatter):
         from kivy.uix.boxlayout import BoxLayout
         menu_content = BoxLayout(orientation="vertical", spacing=dp(4), padding=dp(4))
         discard_button = Button(
-            text="Défausser", size_hint=(1, None), height=dp(38),
+            size_hint=(1, None), height=dp(38),
             background_normal="", background_color=(0.16, 0.19, 0.18, 1),
-            color=(1, 1, 1, 1),
         )
+        discard_row = BoxLayout(orientation="horizontal", spacing=dp(9), padding=(dp(10), 0))
+        discard_row.add_widget(MenuIcon("trash"))
+        discard_row.add_widget(Label(text="Défausser", color=(1, 1, 1, 1),
+                                     halign="left", valign="middle"))
+        discard_button.add_widget(discard_row)
+
         return_button = Button(
-            text="Remettre dans la pioche", size_hint=(1, None), height=dp(38),
+            size_hint=(1, None), height=dp(38),
             background_normal="", background_color=(0.16, 0.19, 0.18, 1),
-            color=(1, 1, 1, 1),
         )
+        return_row = BoxLayout(orientation="horizontal", spacing=dp(9), padding=(dp(10), 0))
+        return_row.add_widget(MenuIcon("return"))
+        return_row.add_widget(Label(text="Remettre dans la pioche", color=(1, 1, 1, 1),
+                                    halign="left", valign="middle"))
+        return_button.add_widget(return_row)
         menu_content.add_widget(discard_button)
         menu_content.add_widget(return_button)
         popup = Popup(
