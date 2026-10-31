@@ -7,10 +7,65 @@ from kivy.lang import Builder
 from kivy.metrics import dp
 from kivy.properties import BooleanProperty, StringProperty
 from kivy.uix.button import Button
+from kivy.uix.label import Label
+from kivy.uix.widget import Widget
+from kivy.graphics import Color, Line
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.image import Image
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.scatter import Scatter
+
+
+class MenuIcon(Widget):
+    """Compact vector icon for a context-menu action."""
+
+    def __init__(self, kind, **kwargs):
+        super().__init__(**kwargs)
+        self.kind = kind
+        self.size_hint = (None, None)
+        self.size = (dp(22), dp(22))
+        self.bind(pos=self._draw_icon, size=self._draw_icon)
+        self._draw_icon()
+
+    def _draw_icon(self, *_):
+        self.canvas.clear()
+        x, y = self.pos
+        w, h = self.size
+        with self.canvas:
+            if self.kind == "trash":
+                Color(1.0, 0.55, 0.16, 1)
+                Line(points=[x + w*.22, y + h*.78, x + w*.78, y + h*.78], width=1.5)
+                Line(points=[x + w*.40, y + h*.88, x + w*.60, y + h*.88], width=1.5)
+                Line(points=[x + w*.30, y + h*.70, x + w*.36, y + h*.18,
+                             x + w*.64, y + h*.18, x + w*.70, y + h*.70], width=1.5)
+                Line(points=[x + w*.45, y + h*.60, x + w*.46, y + h*.30], width=1.2)
+                Line(points=[x + w*.55, y + h*.60, x + w*.54, y + h*.30], width=1.2)
+            else:
+                Color(0.35, 0.82, 0.48, 1)
+                Line(points=[x + w*.78, y + h*.68, x + w*.58, y + h*.84,
+                             x + w*.40, y + h*.68], width=1.6)
+                Line(points=[x + w*.58, y + h*.82, x + w*.58, y + h*.47,
+                             x + w*.42, y + h*.30, x + w*.20, y + h*.30], width=1.6)
+
+
+def _add_menu_button(menu, text, icon_kind, callback):
+    button = Button(
+        size_hint=(1, None), height=dp(40),
+        background_normal="", background_color=(0.16, 0.19, 0.18, 1),
+    )
+    row = BoxLayout(
+        orientation="horizontal", spacing=dp(9),
+        padding=(dp(10), 0), size_hint=(None, None),
+    )
+    row.add_widget(MenuIcon(icon_kind))
+    label = Label(text=text, color=(1, 1, 1, 1), halign="left", valign="middle")
+    label.bind(size=lambda widget, size: setattr(widget, "text_size", size))
+    row.add_widget(label)
+    button.add_widget(row)
+    button.bind(pos=lambda widget, pos: setattr(row, "pos", pos),
+                size=lambda widget, size: setattr(row, "size", size))
+    button.bind(on_release=callback)
+    menu.add_widget(button)
 
 
 class ContextMenuLayer(FloatLayout):
@@ -107,18 +162,14 @@ class CardOnTable(Scatter):
             size_hint=(None, None),
             size=(dp(210), dp(92)),
         )
-        discard_button = Button(
-            text="Défausser",
-            size_hint=(1, None), height=dp(40),
-            background_normal="", background_color=(0.16, 0.19, 0.18, 1),
+        _add_menu_button(
+            menu, "Défausser", "trash",
+            lambda *_: self._discard_from_menu(self._context_popup),
         )
-        return_button = Button(
-            text="Remettre dans la pioche",
-            size_hint=(1, None), height=dp(40),
-            background_normal="", background_color=(0.16, 0.19, 0.18, 1),
+        _add_menu_button(
+            menu, "Remettre dans la pioche", "return",
+            lambda *_: self._return_to_deck_from_menu(self._context_popup),
         )
-        menu.add_widget(discard_button)
-        menu.add_widget(return_button)
 
         # This is a normal widget attached to Window, not a Popup: Kivy
         # therefore cannot recenter it. touch.pos is already in window space.
@@ -133,8 +184,6 @@ class CardOnTable(Scatter):
         Window.add_widget(layer)
         self._context_popup = layer
 
-        discard_button.bind(on_release=lambda *_: self._discard_from_menu(layer))
-        return_button.bind(on_release=lambda *_: self._return_to_deck_from_menu(layer))
 
     def _close_context_menu(self, layer):
         if layer is not None and layer.parent is Window:
