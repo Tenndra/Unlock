@@ -94,6 +94,7 @@ class UnlockTableApp(App):
         self.table = TableSurface()
         self.table.on_open_discard = self.show_discard
         self.table.on_card_discarded = self.update_card_button
+        self.table.on_card_returned_to_deck = self.update_card_button
         body.add_widget(self.table)
         root.add_widget(body)
         decks = self.available_decks()
