@@ -173,7 +173,10 @@ class UnlockTableApp(App):
     def update_card_button(self, card_id):
         button = self.card_buttons.get(card_id)
         if button:
-            button.disabled = card_id in self.table.cards
+            # A card remains unavailable while it is on the table OR in the discard pile.
+            button.disabled = (
+                card_id in self.table.cards or card_id in self.table.discarded
+            )
             button.opacity = 0.45 if button.disabled else 1
 
     def show_discard(self):
