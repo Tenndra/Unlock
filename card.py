@@ -32,7 +32,10 @@ class MenuIcon(Widget):
         x, y = self.pos
         w, h = self.size
         with self.canvas:
-            Color(0.88, 0.84, 0.72, 1)
+            if self.kind == "trash":
+                Color(1.0, 0.55, 0.16, 1)  # Orange: discard
+            else:
+                Color(0.35, 0.82, 0.48, 1)  # Green: return to deck
             if self.kind == "trash":
                 # Lid, handles and the body of a small wastebasket.
                 Line(points=[x + w * .22, y + h * .78, x + w * .78, y + h * .78], width=1.4)
