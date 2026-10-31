@@ -13,6 +13,7 @@ from kivy.lang import Builder
 from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
+from kivy.uix.image import Image
 from kivy.uix.popup import Popup
 from kivy.uix.scrollview import ScrollView
 from kivy.uix.spinner import Spinner
@@ -183,9 +184,22 @@ class UnlockTableApp(App):
             scroll = ScrollView()
             entries = BoxLayout(orientation="vertical", size_hint_y=None, spacing=dp(5))
             entries.bind(minimum_height=entries.setter("height"))
-            for card_id in list(self.table.discarded):
-                row = BoxLayout(size_hint_y=None, height=dp(42), spacing=dp(6))
-                row.add_widget(Label(text=card_id))
+            for card_id, discarded_card in self.table.discarded.items():
+                row = BoxLayout(size_hint_y=None, height=dp(68), spacing=dp(8))
+                thumbnail = Image(
+                    source=str(discarded_card.picture.source),
+                    size_hint=(None, 1),
+                    width=dp(44),
+                    fit_mode="contain",
+                )
+                row.add_widget(thumbnail)
+                name = Label(
+                    text=card_id,
+                    halign="left",
+                    valign="middle",
+                    text_size=(None, None),
+                )
+                row.add_widget(name)
                 restore = DarkButton(text="Remettre en jeu")
                 restore.bind(on_release=lambda _btn, value=card_id: self.restore_from_discard(value))
                 row.add_widget(restore)
