@@ -41,10 +41,6 @@ class SidebarPanel(BoxLayout):
     """Deck list panel."""
 
 
-class BrassButton(Button):
-    """Primary brass-colored action button."""
-
-
 class DarkButton(Button):
     """Secondary dark action button."""
 
@@ -115,9 +111,6 @@ class UnlockTableApp(App):
         help_button = HelpButton(text="?  Aide")
         help_button.bind(on_release=lambda *_: self.show_help())
         bar.add_widget(help_button)
-        discard_button = BrassButton(text="♧  Défausse")
-        discard_button.bind(on_release=lambda *_: self.show_discard())
-        bar.add_widget(discard_button)
         return bar
 
     def available_decks(self):
@@ -219,7 +212,7 @@ class UnlockTableApp(App):
                 "• Double-clic sur une carte : la retourner.\\n"
                 "• Molette au-dessus d’une carte : agrandir ou réduire cette carte.\\n"
                 "• Ctrl + molette au-dessus d’une carte : la faire pivoter.\\n"
-                "• Clique sur la pile Défausse pour consulter ou restaurer une carte.\\n"
+                "• Clique sur la pile Défausse en bas de la table pour consulter ou restaurer une carte.\\n"
                 "• Une carte déjà sur la table ne peut pas être ajoutée une seconde fois.")
         Popup(title="Aide", content=Label(text=text), size_hint=(0.6, 0.5)).open()
 
