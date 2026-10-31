@@ -162,15 +162,17 @@ class CardOnTable(Scatter):
             separator_height=0,
             background="",
             background_color=(0.12, 0.14, 0.13, 0.98),
+            pos_hint={},
         )
-        # Keep the menu fully inside the application window.
+        # Popup.open() recenters the popup by default. Open it first, then
+        # apply the pointer position so the menu stays beside the right-click.
         x = min(max(0, pointer_pos[0]), max(0, Window.width - dp(198)))
         y = min(max(0, pointer_pos[1] - dp(96)), max(0, Window.height - dp(96)))
-        popup.pos = (x, y)
         discard_button.bind(on_release=lambda *_: self._discard_from_menu(popup))
         return_button.bind(on_release=lambda *_: self._return_to_deck_from_menu(popup))
         self._context_popup = popup
         popup.open()
+        popup.pos = (x, y)
 
     def _discard_from_menu(self, popup):
         popup.dismiss()
