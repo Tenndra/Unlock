@@ -124,21 +124,31 @@ class CardOnTable(Scatter):
             size_hint=(1, None), height=dp(38),
             background_normal="", background_color=(0.16, 0.19, 0.18, 1),
         )
-        discard_row = BoxLayout(orientation="horizontal", spacing=dp(9), padding=(dp(10), 0))
+        discard_row = BoxLayout(orientation="horizontal", spacing=dp(9), padding=(dp(10), 0),
+                                size_hint=(None, None))
         discard_row.add_widget(MenuIcon("trash"))
-        discard_row.add_widget(Label(text="Défausser", color=(1, 1, 1, 1),
-                                     halign="left", valign="middle"))
+        discard_label = Label(text="Défausser", color=(1, 1, 1, 1),
+                              halign="left", valign="middle")
+        discard_label.bind(size=lambda widget, size: setattr(widget, "text_size", size))
+        discard_row.add_widget(discard_label)
         discard_button.add_widget(discard_row)
+        discard_button.bind(pos=lambda button, pos: setattr(discard_row, "pos", pos),
+                            size=lambda button, size: setattr(discard_row, "size", size))
 
         return_button = Button(
             size_hint=(1, None), height=dp(38),
             background_normal="", background_color=(0.16, 0.19, 0.18, 1),
         )
-        return_row = BoxLayout(orientation="horizontal", spacing=dp(9), padding=(dp(10), 0))
+        return_row = BoxLayout(orientation="horizontal", spacing=dp(9), padding=(dp(10), 0),
+                               size_hint=(None, None))
         return_row.add_widget(MenuIcon("return"))
-        return_row.add_widget(Label(text="Remettre dans la pioche", color=(1, 1, 1, 1),
-                                    halign="left", valign="middle"))
+        return_label = Label(text="Remettre dans la pioche", color=(1, 1, 1, 1),
+                             halign="left", valign="middle")
+        return_label.bind(size=lambda widget, size: setattr(widget, "text_size", size))
+        return_row.add_widget(return_label)
         return_button.add_widget(return_row)
+        return_button.bind(pos=lambda button, pos: setattr(return_row, "pos", pos),
+                           size=lambda button, size: setattr(return_row, "size", size))
         menu_content.add_widget(discard_button)
         menu_content.add_widget(return_button)
         popup = Popup(
@@ -151,7 +161,7 @@ class CardOnTable(Scatter):
             background_color=(0.12, 0.14, 0.13, 0.98),
         )
         # Keep the menu fully inside the application window.
-        x = min(max(0, pointer_pos[0]), max(0, Window.width - dp(158)))
+        x = min(max(0, pointer_pos[0]), max(0, Window.width - dp(198)))
         y = min(max(0, pointer_pos[1] - dp(96)), max(0, Window.height - dp(96)))
         popup.pos = (x, y)
         discard_button.bind(on_release=lambda *_: self._discard_from_menu(popup))
